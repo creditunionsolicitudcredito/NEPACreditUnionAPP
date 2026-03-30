@@ -17,50 +17,51 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(145deg, #f0f4fa 0%, #e9eff5 100%);
+      background: #f5f7fb;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
       overflow-x: hidden;
     }
 
-    /* App container estilo neobanco */
+    /* App container - ahora ocupa toda la pantalla en móvil */
     .app-container {
-      max-width: 500px;
       width: 100%;
-      margin: 0 auto;
+      max-width: 100%;
+      margin: 0;
       background: #ffffff;
-      border-radius: 2.5rem;
-      box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25);
+      box-shadow: none;
       overflow: hidden;
-      transition: all 0.2s ease;
       position: relative;
-      min-height: 600px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Contenedor de pantallas - IMPORTANTE: evita que se vean elementos ocultos */
+    /* Contenedor de pantallas */
     .screens-container {
       position: relative;
       width: 100%;
+      flex: 1;
       overflow: hidden;
     }
 
     /* Pantallas */
     .screen {
       width: 100%;
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transition: opacity 0.3s ease;
       background: #ffffff;
+      min-height: 100vh;
     }
 
     .hidden {
       display: none !important;
     }
 
-    /* Pantalla de carga */
+    /* Pantalla de carga - pantalla completa */
     .loading-screen {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -70,9 +71,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 100;
+      z-index: 1000;
       transition: all 0.3s ease;
-      border-radius: 2.5rem;
     }
     .loading-screen.hidden {
       display: none !important;
@@ -96,18 +96,23 @@
       font-size: 0.9rem;
     }
 
-    /* Login Styles */
+    /* Login Styles - centrado verticalmente */
     .login-content {
-      padding: 1.8rem 1.5rem 2rem 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      background: #ffffff;
     }
     .logo-bank {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
     .logo-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 0.8rem;
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -118,8 +123,8 @@
       object-fit: contain;
     }
     .logo-placeholder {
-      width: 80px;
-      height: 80px;
+      width: 90px;
+      height: 90px;
       background: #006b3c;
       border-radius: 28px;
       display: flex;
@@ -127,11 +132,11 @@
       justify-content: center;
       color: white;
       font-weight: 700;
-      font-size: 2rem;
+      font-size: 2.5rem;
       box-shadow: 0 12px 18px -8px rgba(0,107,60,0.3);
     }
     .logo-bank h2 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 700;
       color: #1e2a3a;
       letter-spacing: -0.3px;
@@ -139,8 +144,8 @@
     }
     .logo-bank p {
       color: #5b6e8c;
-      font-size: 0.85rem;
-      margin-top: 0.2rem;
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
     }
 
     .input-group {
@@ -148,10 +153,10 @@
     }
     .input-group label {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
       color: #1e2a3a;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
       letter-spacing: -0.2px;
     }
     .input-icon {
@@ -167,11 +172,11 @@
     }
     .input-icon input {
       width: 100%;
-      padding: 0.9rem 1rem 0.9rem 2.8rem;
+      padding: 1rem 1rem 1rem 2.8rem;
       border: 1.5px solid #e2e8f0;
       border-radius: 1.5rem;
       font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1rem;
       background: #ffffff;
       transition: all 0.2s;
     }
@@ -185,13 +190,13 @@
       color: white;
       font-weight: 700;
       font-size: 1rem;
-      padding: 0.9rem;
+      padding: 1rem;
       width: 100%;
       border: none;
       border-radius: 2rem;
       cursor: pointer;
       transition: all 0.2s;
-      margin-top: 0.5rem;
+      margin-top: 1rem;
       box-shadow: 0 8px 18px -6px rgba(0,107,60,0.4);
     }
     .btn-login:hover {
@@ -206,8 +211,8 @@
     .error-message {
       background: #fee2e2;
       color: #b91c1c;
-      font-size: 0.8rem;
-      padding: 0.7rem 1rem;
+      font-size: 0.85rem;
+      padding: 0.8rem 1rem;
       border-radius: 1.5rem;
       margin-top: 1rem;
       text-align: center;
@@ -219,92 +224,109 @@
     }
     .demo-note {
       background: #f1f5f9;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       border-radius: 1rem;
-      padding: 0.8rem;
+      padding: 1rem;
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: #2c3e50;
     }
     .demo-note span {
       font-weight: 700;
       background: #e9ecef;
-      padding: 0.2rem 0.5rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 30px;
       font-family: monospace;
     }
 
-    /* Dashboard (main) */
+    /* Dashboard (main) - PANTALLA COMPLETA */
     .dashboard-wrapper {
       display: flex;
       flex-direction: column;
-      min-height: 100%;
-      background: #ffffff;
+      min-height: 100vh;
+      background: #f8fafc;
     }
     .dashboard-content {
       flex: 1;
-      padding: 1.8rem 1.5rem 1rem 1.5rem;
+      padding: 1.5rem 1.5rem 1rem 1.5rem;
+      background: #f8fafc;
     }
     .dashboard-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1.8rem;
+      background: transparent;
     }
     .welcome h3 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: #1e2a3a;
     }
     .welcome p {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: #5b6e8c;
+      margin-top: 0.2rem;
     }
     .logout-btn {
-      background: #f1f5f9;
-      border: none;
-      padding: 0.5rem 1rem;
+      background: white;
+      border: 1px solid #e2e8f0;
+      padding: 0.6rem 1.2rem;
       border-radius: 2rem;
       font-weight: 600;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: #1e2a3a;
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
     .logout-btn:hover {
-      background: #e2e8f0;
+      background: #f8fafc;
+      border-color: #cbd5e1;
     }
 
-    /* Card estilo Nubank */
+    /* Card estilo Nubank - más premium */
     .bank-card {
       background: linear-gradient(135deg, #0a2f2c 0%, #004d2b 100%);
       border-radius: 2rem;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
+      padding: 1.8rem;
+      margin-bottom: 1.8rem;
       color: white;
-      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.2);
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
       position: relative;
       overflow: hidden;
+    }
+    .bank-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
+      background-size: 20px 20px;
+      opacity: 0.3;
+      pointer-events: none;
     }
     .card-chip {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
     }
     .chip-icon {
-      font-size: 2rem;
-      opacity: 0.8;
+      font-size: 2.2rem;
+      opacity: 0.9;
     }
     .card-brand i {
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
     .card-number {
       letter-spacing: 2px;
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
       font-weight: 400;
       opacity: 0.8;
     }
@@ -312,34 +334,37 @@
       margin-top: 0.5rem;
     }
     .balance-label {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       opacity: 0.7;
     }
     .balance-amount {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 700;
       letter-spacing: -0.5px;
+      margin-top: 0.2rem;
     }
 
     /* Saldo grande */
     .balance-big {
-      background: #f8fafc;
+      background: white;
       border-radius: 1.5rem;
-      padding: 1rem 1.2rem;
+      padding: 1.2rem 1.5rem;
       margin-bottom: 1.8rem;
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      border: 1px solid #eef2f6;
     }
     .balance-big span:first-child {
       font-weight: 500;
       color: #3a546d;
+      font-size: 0.95rem;
     }
     .balance-big .big-number {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: 800;
       color: #006b3c;
     }
@@ -348,9 +373,14 @@
     .transactions-title {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       margin-bottom: 1rem;
       font-weight: 600;
       color: #1e2a3a;
+      padding: 0 0.2rem;
+    }
+    .transactions-title span:first-child {
+      font-size: 1rem;
     }
     .transaction-list {
       background: #ffffff;
@@ -358,13 +388,18 @@
       overflow: hidden;
       border: 1px solid #edf2f7;
       margin-bottom: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
     }
     .transaction-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.9rem 1rem;
+      padding: 1rem 1.2rem;
       border-bottom: 1px solid #f0f2f5;
+      transition: background 0.2s;
+    }
+    .transaction-item:hover {
+      background: #fafcff;
     }
     .transaction-item:last-child {
       border-bottom: none;
@@ -375,18 +410,20 @@
       gap: 12px;
     }
     .transaction-icon {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       background: #eef2ff;
       border-radius: 30px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #006b3c;
+      font-size: 1.1rem;
     }
     .transaction-details h4 {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 600;
+      margin-bottom: 0.2rem;
     }
     .transaction-details p {
       font-size: 0.7rem;
@@ -394,22 +431,24 @@
     }
     .transaction-amount {
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
     .positive {
       color: #2c7a4d;
     }
 
-    /* Barra de navegación inferior */
+    /* Barra de navegación inferior - fija */
     .bottom-nav {
       background: #ffffff;
       border-top: 1px solid #edf2f7;
-      padding: 0.7rem 1rem 1rem 1rem;
+      padding: 0.6rem 1rem 0.9rem 1rem;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      position: relative;
-      z-index: 10;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
     }
     .nav-item {
       display: flex;
@@ -418,20 +457,20 @@
       gap: 0.3rem;
       cursor: pointer;
       transition: all 0.2s;
-      padding: 0.4rem 0.8rem;
+      padding: 0.5rem 0.8rem;
       border-radius: 1rem;
       flex: 1;
       text-align: center;
     }
     .nav-item i {
-      font-size: 1.3rem;
-      color: #8ba0bc;
+      font-size: 1.4rem;
+      color: #94a3b8;
       transition: color 0.2s;
     }
     .nav-item span {
       font-size: 0.7rem;
       font-weight: 500;
-      color: #8ba0bc;
+      color: #94a3b8;
       transition: color 0.2s;
     }
     .nav-item.active i,
@@ -445,7 +484,7 @@
     /* Mensaje flotante (toast) */
     .toast-message {
       position: fixed;
-      bottom: 80px;
+      bottom: 90px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
       background: #1e2a3a;
@@ -472,22 +511,28 @@
       color: #eac384;
     }
 
-    /* responsive */
-    @media (max-width: 550px) {
+    /* responsive - pantalla completa en móvil */
+    @media (max-width: 768px) {
       .dashboard-content {
-        padding: 1.2rem 1.2rem 0.5rem 1.2rem;
+        padding: 1rem 1rem 0.5rem 1rem;
       }
       .balance-amount {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       .big-number {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
       }
       .nav-item i {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
       .nav-item span {
         font-size: 0.65rem;
+      }
+      .bank-card {
+        padding: 1.4rem;
+      }
+      .card-number {
+        font-size: 0.8rem;
       }
     }
   </style>
@@ -534,7 +579,7 @@
     <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #6c757d;">Conectando con NEPA Secure</p>
   </div>
 
-  <!-- DASHBOARD (principal) con wrapper para barra de navegación -->
+  <!-- DASHBOARD - PANTALLA COMPLETA -->
   <div id="dashboardScreen" class="screen hidden">
     <div class="dashboard-wrapper">
       <div class="dashboard-content">
@@ -565,19 +610,18 @@
           <span class="big-number" id="mainBalanceDisplay">$0.00</span>
         </div>
 
-        <!-- Tabla de transacciones - SOLO DESEMBOLSO DEL CRÉDITO -->
+        <!-- Tabla de transacciones -->
         <div class="transactions-title">
           <span><i class="fas fa-history"></i> Último movimiento</span>
-          <span style="font-size:0.7rem; background:#eef2ff; padding:4px 10px; border-radius:20px;">crédito aprobado</span>
+          <span style="font-size:0.7rem; background:#eef2ff; padding:4px 12px; border-radius:20px;">crédito aprobado</span>
         </div>
         <div class="transaction-list" id="transactionsContainer">
-          <!-- JS renderiza dinámico -->
           <div class="transaction-item" style="justify-content:center; color:#aaa;">Cargando...</div>
         </div>
       </div>
       
       <!-- Barra de navegación inferior -->
-      <div id="bottomNav" class="bottom-nav">
+      <div class="bottom-nav">
         <div class="nav-item" data-action="inicio">
           <i class="fas fa-home"></i>
           <span>Inicio</span>
@@ -603,14 +647,13 @@
   </div>
 </div>
 
-<!-- Mensaje flotante para notificaciones -->
+<!-- Mensaje flotante -->
 <div id="toastMsg" class="toast-message">
   <i class="fas fa-shield-alt"></i> 
   <span>Por favor, obtener Póliza de Protección de Crédito para habilitar todas las funciones de NEPA Credit Union</span>
 </div>
 
 <script>
-  // Manejador de error para el logo
   function handleLogoError() {
     const img = document.getElementById('bankLogo');
     const placeholder = document.getElementById('logoPlaceholder');
@@ -618,7 +661,6 @@
     if (placeholder) placeholder.style.display = 'flex';
   }
 
-  // ======================== SIMULACIÓN BASE DE DATOS (JSON en nube) ========================
   const MOCK_DB = {
     users: [
       {
@@ -681,7 +723,6 @@
 
   function renderDashboard() {
     if (!currentUser) return;
-
     document.getElementById('userNameSpan').innerText = currentUser.fullName;
     const balanceFormatted = formatMoney(currentUser.balance);
     document.getElementById('cardBalanceAmount').innerText = balanceFormatted;
@@ -694,9 +735,8 @@
     }
 
     const tx = currentUser.transactions[0];
-    const isIncome = tx.type === 'income';
-    const amountClass = isIncome ? 'positive' : 'negative';
-    const sign = isIncome ? '+' : '-';
+    const amountClass = tx.type === 'income' ? 'positive' : 'negative';
+    const sign = tx.type === 'income' ? '+' : '-';
     const icon = '<i class="fas fa-check-circle"></i>';
     const dateObj = new Date(tx.date);
     const formattedDate = dateObj.toLocaleDateString('es-ES', { day:'numeric', month:'long', year:'numeric' });
@@ -727,9 +767,7 @@
 
   function attemptLogin(username, password) {
     const foundUser = MOCK_DB.users.find(u => u.username === username && u.password === password);
-    if (foundUser) {
-      return { success: true, user: foundUser };
-    }
+    if (foundUser) return { success: true, user: foundUser };
     return { success: false, message: "Credenciales incorrectas. Usuario: invitado / estudiante123" };
   }
 
@@ -761,12 +799,10 @@
   }
 
   function showLoadingAndLogin(userData) {
-    // Mostrar pantalla de carga
     document.getElementById('loginScreen').classList.add('hidden');
     document.getElementById('loadingScreen').classList.remove('hidden');
     document.getElementById('dashboardScreen').classList.add('hidden');
     
-    // Simular carga de 2 segundos
     setTimeout(() => {
       showDashboardScreen(userData);
     }, 2000);
@@ -788,7 +824,6 @@
     });
   }
 
-  // Evento login con carga simulada
   document.getElementById('doLoginBtn').addEventListener('click', () => {
     const username = document.getElementById('loginUser').value.trim();
     const password = document.getElementById('loginPass').value;
@@ -797,7 +832,6 @@
       return;
     }
     
-    // Deshabilitar botón durante el proceso
     const loginBtn = document.getElementById('doLoginBtn');
     loginBtn.disabled = true;
     loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Validando...';
@@ -805,7 +839,6 @@
     const result = attemptLogin(username, password);
     if (result.success) {
       showLoadingAndLogin(result.user);
-      // Resetear botón después del login
       setTimeout(() => {
         loginBtn.disabled = false;
         loginBtn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> Acceder';
@@ -830,7 +863,6 @@
 
   document.getElementById('logoutBtn').addEventListener('click', () => {
     showLoginScreen();
-    // Resetear botón de login por si acaso
     const loginBtn = document.getElementById('doLoginBtn');
     loginBtn.disabled = false;
     loginBtn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> Acceder';
@@ -840,10 +872,8 @@
 
   window.addEventListener('load', () => {
     showLoginScreen();
-    
     const inicioNav = document.querySelector('.nav-item[data-action="inicio"]');
     if (inicioNav) inicioNav.classList.add('active');
-    
     const navs = document.querySelectorAll('.nav-item');
     navs.forEach(nav => {
       nav.addEventListener('click', function() {
