@@ -296,7 +296,7 @@
       transition: all 0.2s ease;
     }
 
-    /* Saldo grande con efecto TAP para ocultar */
+    /* Saldo grande */
     .balance-big {
       background: white;
       border-radius: 1.2rem;
@@ -329,17 +329,6 @@
       color: #006b3c;
       transition: all 0.2s ease;
     }
-    .eye-icon {
-      font-size: 0.8rem;
-      color: #8ba0bc;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-    .eye-icon:hover {
-      color: #006b3c;
-    }
-
-    /* Indicador visual de que se puede tocar */
     .tap-hint {
       font-size: 0.55rem;
       color: #8ba0bc;
@@ -408,11 +397,11 @@
       color: #2c7a4d;
     }
 
-    /* Barra de navegación */
+    /* Barra de navegación - SUBIDA (menos padding inferior) */
     .bottom-nav {
       background: #ffffff;
       border-top: 1px solid #edf2f7;
-      padding: 0.4rem 0.5rem 0.6rem 0.5rem;
+      padding: 0.5rem 0.5rem 0.3rem 0.5rem;
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -491,6 +480,10 @@
       .big-number {
         font-size: 1.3rem;
       }
+      /* Aún más arriba en pantallas muy pequeñas */
+      .bottom-nav {
+        padding: 0.4rem 0.5rem 0.2rem 0.5rem;
+      }
     }
   </style>
 </head>
@@ -558,7 +551,7 @@
           </div>
         </div>
 
-        <!-- Saldo grande con efecto TAP para ocultar/mostrar -->
+        <!-- Saldo grande con efecto TAP -->
         <div class="balance-big" id="balanceTapArea">
           <span>
             <i class="fas fa-wallet"></i> Tu saldo total
@@ -577,7 +570,7 @@
         </div>
       </div>
       
-      <!-- Barra de navegación -->
+      <!-- Barra de navegación - SUBIDA -->
       <div class="bottom-nav">
         <div class="nav-item" data-action="inicio">
           <i class="fas fa-home"></i>
@@ -611,7 +604,6 @@
 </div>
 
 <script>
-  // Manejador de error para el logo
   function handleLogoError() {
     const img = document.getElementById('bankLogo');
     const placeholder = document.getElementById('logoPlaceholder');
@@ -619,7 +611,6 @@
     if (placeholder) placeholder.style.display = 'flex';
   }
 
-  // Base de datos de usuarios
   const MOCK_DB = {
     users: [
       {
@@ -682,22 +673,19 @@
     }, 2500);
   }
 
-  // Función para ocultar/mostrar saldo con TAP
   function toggleBalanceVisibility() {
     const balanceElement = document.getElementById('mainBalanceDisplay');
     const cardBalanceElement = document.getElementById('cardBalanceAmount');
     const tapHint = document.querySelector('.tap-hint');
     
     if (balanceVisible) {
-      // Ocultar saldo
       hiddenBalanceValue = balanceElement.innerText;
       balanceElement.innerText = '••••••';
       cardBalanceElement.innerText = '••••••';
       balanceVisible = false;
       tapHint.innerHTML = '👆 toca para mostrar';
-      showToast('🔒 Saldo oculto · Toca nuevamente para mostrar');
+      showToast('🔒 Saldo oculto');
     } else {
-      // Mostrar saldo
       balanceElement.innerText = hiddenBalanceValue || formatMoney(currentUser.balance);
       cardBalanceElement.innerText = hiddenBalanceValue || formatMoney(currentUser.balance);
       balanceVisible = true;
@@ -711,7 +699,6 @@
     document.getElementById('userNameSpan').innerText = currentUser.fullName;
     const balanceFormatted = formatMoney(currentUser.balance);
     
-    // Resetear estado de visibilidad al cargar dashboard
     balanceVisible = true;
     document.getElementById('mainBalanceDisplay').innerText = balanceFormatted;
     document.getElementById('cardBalanceAmount').innerText = balanceFormatted;
@@ -807,13 +794,12 @@
           document.querySelector('.dashboard-content')?.scrollTo({ top: 0, behavior: 'smooth' });
           showToast('✨ Inicio · Para más funciones adquiere tu Póliza de Protección');
         } else {
-          showToast('🔒 Póliza de Protección de Crédito requerida para usar esta función');
+          showToast('🔒 Póliza de Protección de Crédito requerida');
         }
       });
     });
   }
 
-  // Evento login
   document.getElementById('doLoginBtn').addEventListener('click', () => {
     const username = document.getElementById('loginUser').value.trim();
     const password = document.getElementById('loginPass').value;
@@ -840,7 +826,6 @@
     }
   });
 
-  // Enter para login
   const passInput = document.getElementById('loginPass');
   const userInput = document.getElementById('loginUser');
   const loginHandler = (e) => {
@@ -852,7 +837,6 @@
   passInput.addEventListener('keypress', loginHandler);
   userInput.addEventListener('keypress', loginHandler);
 
-  // Cerrar sesión
   document.getElementById('logoutBtn').addEventListener('click', () => {
     showLoginScreen();
     const loginBtn = document.getElementById('doLoginBtn');
@@ -860,7 +844,6 @@
     loginBtn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> Acceder';
   });
 
-  // EVENTO PRINCIPAL: TAP para ocultar/mostrar saldo
   const balanceTapArea = document.getElementById('balanceTapArea');
   if (balanceTapArea) {
     balanceTapArea.addEventListener('click', (e) => {
