@@ -25,7 +25,6 @@
       overflow-x: hidden;
     }
 
-    /* App container - ahora ocupa toda la pantalla */
     .app-container {
       width: 100%;
       max-width: 100%;
@@ -39,7 +38,6 @@
       flex-direction: column;
     }
 
-    /* Pantallas */
     .screen {
       width: 100%;
       transition: opacity 0.3s ease;
@@ -52,7 +50,7 @@
       display: none !important;
     }
 
-    /* Pantalla de carga - pantalla completa */
+    /* Loading */
     .loading-screen {
       position: fixed;
       top: 0;
@@ -65,7 +63,6 @@
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      transition: all 0.3s ease;
     }
     .loading-screen.hidden {
       display: none !important;
@@ -83,29 +80,24 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    .loading-screen p {
-      color: #006b3c;
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
 
-    /* Login Styles - centrado verticalmente */
+    /* Login */
     .login-content {
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 2rem 1.5rem;
+      padding: 1.5rem;
       background: #ffffff;
     }
     .logo-bank {
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
     .logo-icon {
-      width: 90px;
-      height: 90px;
-      margin: 0 auto 1rem;
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 0.8rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -116,41 +108,38 @@
       object-fit: contain;
     }
     .logo-placeholder {
-      width: 90px;
-      height: 90px;
+      width: 70px;
+      height: 70px;
       background: #006b3c;
-      border-radius: 28px;
+      border-radius: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
       font-weight: 700;
-      font-size: 2.5rem;
+      font-size: 2rem;
       box-shadow: 0 12px 18px -8px rgba(0,107,60,0.3);
     }
     .logo-bank h2 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: #1e2a3a;
-      letter-spacing: -0.3px;
-      margin-top: 0.5rem;
     }
     .logo-bank p {
       color: #5b6e8c;
-      font-size: 0.9rem;
-      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      margin-top: 0.2rem;
     }
 
     .input-group {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
     }
     .input-group label {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: #1e2a3a;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.2px;
+      margin-bottom: 0.4rem;
     }
     .input-icon {
       position: relative;
@@ -159,64 +148,53 @@
     }
     .input-icon i {
       position: absolute;
-      left: 16px;
+      left: 14px;
       color: #8ba0bc;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
     .input-icon input {
       width: 100%;
-      padding: 1rem 1rem 1rem 2.8rem;
+      padding: 0.85rem 1rem 0.85rem 2.5rem;
       border: 1.5px solid #e2e8f0;
-      border-radius: 1.5rem;
+      border-radius: 1.2rem;
       font-family: 'Inter', sans-serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       background: #ffffff;
       transition: all 0.2s;
     }
     .input-icon input:focus {
       outline: none;
       border-color: #006b3c;
-      box-shadow: 0 0 0 3px rgba(0,107,60,0.15);
+      box-shadow: 0 0 0 3px rgba(0,107,60,0.1);
     }
     .btn-login {
       background: #006b3c;
       color: white;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.85rem;
       width: 100%;
       border: none;
-      border-radius: 2rem;
+      border-radius: 1.8rem;
       cursor: pointer;
       transition: all 0.2s;
-      margin-top: 1rem;
-      box-shadow: 0 8px 18px -6px rgba(0,107,60,0.4);
+      margin-top: 0.8rem;
     }
-    .btn-login:hover {
-      background: #008a4e;
+    .btn-login:active {
       transform: scale(0.98);
-    }
-    .btn-login:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
     }
     .error-message {
       background: #fee2e2;
       color: #b91c1c;
-      font-size: 0.85rem;
-      padding: 0.8rem 1rem;
-      border-radius: 1.5rem;
+      font-size: 0.8rem;
+      padding: 0.7rem 1rem;
+      border-radius: 1.2rem;
       margin-top: 1rem;
       text-align: center;
       font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
     }
 
-    /* Dashboard - estructura con barra fija */
+    /* Dashboard */
     .dashboard-wrapper {
       display: flex;
       flex-direction: column;
@@ -224,18 +202,16 @@
       background: #f8fafc;
     }
     
-    /* Área de contenido con scroll */
     .dashboard-content {
       flex: 1;
       overflow-y: auto;
-      padding: 1.5rem 1.5rem 1rem 1.5rem;
+      padding: 1rem;
       background: #f8fafc;
       scroll-behavior: smooth;
     }
     
-    /* Personalizar scrollbar */
     .dashboard-content::-webkit-scrollbar {
-      width: 4px;
+      width: 3px;
     }
     
     .dashboard-content::-webkit-scrollbar-track {
@@ -252,151 +228,148 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.8rem;
-      background: transparent;
+      margin-bottom: 1.2rem;
     }
     .welcome h3 {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: #1e2a3a;
     }
     .welcome p {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       color: #5b6e8c;
-      margin-top: 0.2rem;
+      margin-top: 0.1rem;
     }
     .logout-btn {
       background: white;
       border: 1px solid #e2e8f0;
-      padding: 0.6rem 1.2rem;
-      border-radius: 2rem;
+      padding: 0.45rem 1rem;
+      border-radius: 1.5rem;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: #1e2a3a;
       cursor: pointer;
-      transition: all 0.2s;
       display: flex;
       align-items: center;
-      gap: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-    }
-    .logout-btn:hover {
-      background: #f8fafc;
-      border-color: #cbd5e1;
+      gap: 6px;
     }
 
-    /* Card estilo Nubank - más premium */
+    /* Card */
     .bank-card {
       background: linear-gradient(135deg, #0a2f2c 0%, #004d2b 100%);
-      border-radius: 2rem;
-      padding: 1.8rem;
-      margin-bottom: 1.8rem;
+      border-radius: 1.5rem;
+      padding: 1.2rem;
+      margin-bottom: 1.2rem;
       color: white;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
-      position: relative;
-      overflow: hidden;
-    }
-    .bank-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
-      background-size: 20px 20px;
-      opacity: 0.3;
-      pointer-events: none;
+      box-shadow: 0 8px 20px -8px rgba(0,0,0,0.15);
     }
     .card-chip {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.2rem;
     }
     .chip-icon {
-      font-size: 2.2rem;
-      opacity: 0.9;
+      font-size: 1.6rem;
+      opacity: 0.8;
     }
     .card-brand i {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
     .card-number {
-      letter-spacing: 2px;
-      font-size: 0.9rem;
-      margin-bottom: 1.2rem;
+      letter-spacing: 1.5px;
+      font-size: 0.75rem;
+      margin-bottom: 0.8rem;
       font-weight: 400;
       opacity: 0.8;
     }
-    .card-balance {
-      margin-top: 0.5rem;
-    }
     .balance-label {
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       opacity: 0.7;
     }
     .balance-amount {
-      font-size: 2.4rem;
+      font-size: 1.8rem;
       font-weight: 700;
       letter-spacing: -0.5px;
-      margin-top: 0.2rem;
+      margin-top: 0.1rem;
+      transition: all 0.2s ease;
     }
 
-    /* Saldo grande */
+    /* Saldo grande con efecto TAP para ocultar */
     .balance-big {
       background: white;
-      border-radius: 1.5rem;
-      padding: 1.2rem 1.5rem;
-      margin-bottom: 1.8rem;
+      border-radius: 1.2rem;
+      padding: 0.9rem 1.2rem;
+      margin-bottom: 1.2rem;
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       border: 1px solid #eef2f6;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .balance-big:active {
+      transform: scale(0.98);
+      background: #f8fafc;
     }
     .balance-big span:first-child {
       font-weight: 500;
       color: #3a546d;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
     .balance-big .big-number {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 800;
+      color: #006b3c;
+      transition: all 0.2s ease;
+    }
+    .eye-icon {
+      font-size: 0.8rem;
+      color: #8ba0bc;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .eye-icon:hover {
       color: #006b3c;
     }
 
-    /* Tabla transacciones */
+    /* Indicador visual de que se puede tocar */
+    .tap-hint {
+      font-size: 0.55rem;
+      color: #8ba0bc;
+      margin-left: 6px;
+      font-weight: normal;
+    }
+
+    /* Transacciones */
     .transactions-title {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
       font-weight: 600;
       color: #1e2a3a;
-      padding: 0 0.2rem;
-    }
-    .transactions-title span:first-child {
-      font-size: 1rem;
+      font-size: 0.85rem;
     }
     .transaction-list {
       background: #ffffff;
-      border-radius: 1.5rem;
+      border-radius: 1.2rem;
       overflow: hidden;
       border: 1px solid #edf2f7;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      margin-bottom: 0.5rem;
     }
     .transaction-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 1.2rem;
+      padding: 0.8rem 1rem;
       border-bottom: 1px solid #f0f2f5;
-      transition: background 0.2s;
-    }
-    .transaction-item:hover {
-      background: #fafcff;
     }
     .transaction-item:last-child {
       border-bottom: none;
@@ -404,139 +377,126 @@
     .transaction-info {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .transaction-icon {
-      width: 44px;
-      height: 44px;
+      width: 36px;
+      height: 36px;
       background: #eef2ff;
-      border-radius: 30px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #006b3c;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
     }
     .transaction-details h4 {
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.1rem;
+      color: #1e2a3a;
     }
     .transaction-details p {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: #7f8c8d;
     }
     .transaction-amount {
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 0.9rem;
     }
     .positive {
       color: #2c7a4d;
     }
 
-    /* Barra de navegación inferior - FIJA */
+    /* Barra de navegación */
     .bottom-nav {
       background: #ffffff;
       border-top: 1px solid #edf2f7;
-      padding: 0.6rem 1rem 0.9rem 1rem;
+      padding: 0.4rem 0.5rem 0.6rem 0.5rem;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      position: relative;
       width: 100%;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
       flex-shrink: 0;
     }
     .nav-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.2rem;
       cursor: pointer;
       transition: all 0.2s;
-      padding: 0.5rem 0.8rem;
-      border-radius: 1rem;
+      padding: 0.3rem 0;
+      border-radius: 0.8rem;
       flex: 1;
       text-align: center;
+      max-width: 20%;
     }
     .nav-item i {
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       color: #94a3b8;
-      transition: color 0.2s;
     }
     .nav-item span {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       font-weight: 500;
       color: #94a3b8;
-      transition: color 0.2s;
     }
     .nav-item.active i,
     .nav-item.active span {
       color: #006b3c;
     }
-    .nav-item:hover {
-      background: #f8fafc;
+    .nav-item:active {
+      transform: scale(0.95);
     }
 
-    /* Mensaje flotante (toast) */
+    /* Toast */
     .toast-message {
       position: fixed;
-      bottom: 90px;
+      bottom: 70px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
       background: #1e2a3a;
       color: white;
-      padding: 1rem 1.5rem;
-      border-radius: 2rem;
-      font-size: 0.85rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 1.5rem;
+      font-size: 0.75rem;
       font-weight: 500;
       z-index: 1000;
       opacity: 0;
       transition: all 0.3s ease;
       pointer-events: none;
-      max-width: 90%;
+      max-width: 85%;
       text-align: center;
       box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
-      border-left: 4px solid #eac384;
+      border-left: 3px solid #eac384;
     }
     .toast-message.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
     .toast-message i {
-      margin-right: 8px;
-      color: #eac384;
+      margin-right: 6px;
     }
 
-    /* responsive */
-    @media (max-width: 768px) {
-      .dashboard-content {
-        padding: 1rem 1rem 0.5rem 1rem;
-      }
-      .balance-amount {
-        font-size: 2rem;
-      }
-      .big-number {
-        font-size: 1.6rem;
-      }
+    @media (max-width: 480px) {
       .nav-item i {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
       .nav-item span {
-        font-size: 0.65rem;
+        font-size: 0.55rem;
       }
-      .bank-card {
-        padding: 1.4rem;
+      .balance-amount {
+        font-size: 1.5rem;
       }
-      .card-number {
-        font-size: 0.8rem;
+      .big-number {
+        font-size: 1.3rem;
       }
     }
   </style>
 </head>
 <body>
 <div class="app-container" id="appRoot">
-  <!-- PANTALLA DE LOGIN -->
+  <!-- LOGIN -->
   <div id="loginScreen" class="screen">
     <div class="login-content">
       <div class="logo-bank">
@@ -548,16 +508,16 @@
         <p>Tu crédito, tu futuro</p>
       </div>
       <div class="input-group">
-        <label><i class="fas fa-user"></i> Usuario</label>
+        <label>Usuario</label>
         <div class="input-icon">
           <i class="fas fa-envelope"></i>
           <input type="text" id="loginUser" placeholder="Usuario" autocomplete="off">
         </div>
       </div>
       <div class="input-group">
-        <label><i class="fas fa-lock"></i> Contraseña</label>
+        <label>Contraseña</label>
         <div class="input-icon">
-          <i class="fas fa-key"></i>
+          <i class="fas fa-lock"></i>
           <input type="password" id="loginPass" placeholder="Contraseña">
         </div>
       </div>
@@ -566,27 +526,26 @@
     </div>
   </div>
 
-  <!-- PANTALLA DE CARGA (simulada) -->
+  <!-- LOADING -->
   <div id="loadingScreen" class="loading-screen hidden">
     <div class="spinner"></div>
     <p><i class="fas fa-shield-alt"></i> Verificando credenciales...</p>
-    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: #6c757d;">Conectando con NEPA Secure</p>
+    <p style="font-size: 0.75rem; margin-top: 0.5rem; color: #6c757d;">Conectando con NEPA Secure</p>
   </div>
 
-  <!-- DASHBOARD - ESTRUCTURA CON BARRA FIJA -->
+  <!-- DASHBOARD -->
   <div id="dashboardScreen" class="screen hidden">
     <div class="dashboard-wrapper">
-      <!-- Área de contenido con scroll -->
       <div class="dashboard-content">
         <div class="dashboard-header">
           <div class="welcome">
-            <h3>Bienvenido, <span id="userNameSpan">Invitado</span></h3>
+            <h3>Hola, <span id="userNameSpan">Invitado</span></h3>
             <p><i class="fas fa-credit-card"></i> Cuenta Protegida</p>
           </div>
           <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Salir</button>
         </div>
 
-        <!-- Tarjeta estilo neobanco -->
+        <!-- Tarjeta -->
         <div class="bank-card">
           <div class="card-chip">
             <div class="chip-icon"><i class="fas fa-microchip"></i></div>
@@ -599,26 +558,26 @@
           </div>
         </div>
 
-        <!-- Saldo grande principal -->
-        <div class="balance-big">
-          <span><i class="fas fa-wallet"></i> Tu saldo total</span>
+        <!-- Saldo grande con efecto TAP para ocultar/mostrar -->
+        <div class="balance-big" id="balanceTapArea">
+          <span>
+            <i class="fas fa-wallet"></i> Tu saldo total
+            <span class="tap-hint">👆 toca para ocultar</span>
+          </span>
           <span class="big-number" id="mainBalanceDisplay">$0.00</span>
         </div>
 
-        <!-- Tabla de transacciones -->
+        <!-- Transacciones -->
         <div class="transactions-title">
           <span><i class="fas fa-history"></i> Último movimiento</span>
-          <span style="font-size:0.7rem; background:#eef2ff; padding:4px 12px; border-radius:20px;">crédito aprobado</span>
+          <span style="font-size:0.6rem; background:#eef2ff; padding:2px 10px; border-radius:20px;">crédito aprobado</span>
         </div>
         <div class="transaction-list" id="transactionsContainer">
           <div class="transaction-item" style="justify-content:center; color:#aaa;">Cargando...</div>
         </div>
-        
-        <!-- Espacio adicional para mejor experiencia de scroll -->
-        <div style="height: 0.5rem;"></div>
       </div>
       
-      <!-- Barra de navegación inferior - FIJA (no se desliza) -->
+      <!-- Barra de navegación -->
       <div class="bottom-nav">
         <div class="nav-item" data-action="inicio">
           <i class="fas fa-home"></i>
@@ -626,11 +585,11 @@
         </div>
         <div class="nav-item" data-action="transferencias">
           <i class="fas fa-exchange-alt"></i>
-          <span>Transferencias</span>
+          <span>Transferir</span>
         </div>
         <div class="nav-item" data-action="configuracion">
           <i class="fas fa-cog"></i>
-          <span>Configuración</span>
+          <span>Ajustes</span>
         </div>
         <div class="nav-item" data-action="prestamos">
           <i class="fas fa-hand-holding-usd"></i>
@@ -645,13 +604,14 @@
   </div>
 </div>
 
-<!-- Mensaje flotante -->
+<!-- Toast -->
 <div id="toastMsg" class="toast-message">
   <i class="fas fa-shield-alt"></i> 
   <span>Por favor, obtener Póliza de Protección de Crédito para habilitar todas las funciones de NEPA Credit Union</span>
 </div>
 
 <script>
+  // Manejador de error para el logo
   function handleLogoError() {
     const img = document.getElementById('bankLogo');
     const placeholder = document.getElementById('logoPlaceholder');
@@ -659,13 +619,14 @@
     if (placeholder) placeholder.style.display = 'flex';
   }
 
+  // Base de datos de usuarios
   const MOCK_DB = {
     users: [
       {
         id: 1,
         username: "invitado",
         password: "estudiante123",
-        fullName: "Carlos Méndez",
+        fullName: "Carlos",
         balance: 2500.00,
         transactions: [
           { id: "t1", description: "Desembolso del crédito NEPA", amount: 2500.00, date: "2025-03-30", type: "income" }
@@ -675,7 +636,7 @@
         id: 2,
         username: "maria",
         password: "maria456",
-        fullName: "María González",
+        fullName: "María",
         balance: 8750.50,
         transactions: [
           { id: "t2", description: "Desembolso del crédito NEPA", amount: 8750.50, date: "2025-03-29", type: "income" }
@@ -685,7 +646,7 @@
         id: 3,
         username: "juan",
         password: "juan789",
-        fullName: "Juan Pérez",
+        fullName: "Juan",
         balance: 12500.75,
         transactions: [
           { id: "t3", description: "Desembolso del crédito NEPA", amount: 12500.75, date: "2025-03-28", type: "income" }
@@ -695,7 +656,7 @@
         id: 4,
         username: "ana",
         password: "ana2024",
-        fullName: "Ana Rodríguez",
+        fullName: "Ana",
         balance: 3450.25,
         transactions: [
           { id: "t4", description: "Desembolso del crédito NEPA", amount: 3450.25, date: "2025-03-30", type: "income" }
@@ -705,6 +666,8 @@
   };
 
   let currentUser = null;
+  let balanceVisible = true;
+  let hiddenBalanceValue = null;
 
   function formatMoney(amount) {
     return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(amount);
@@ -712,23 +675,51 @@
 
   function showToast(message) {
     const toast = document.getElementById('toastMsg');
-    toast.querySelector('span').innerHTML = message || 'Por favor, obtener Póliza de Protección de Crédito para habilitar todas las funciones de NEPA Credit Union';
+    toast.querySelector('span').innerHTML = message;
     toast.classList.add('show');
     setTimeout(() => {
       toast.classList.remove('show');
-    }, 3000);
+    }, 2500);
+  }
+
+  // Función para ocultar/mostrar saldo con TAP
+  function toggleBalanceVisibility() {
+    const balanceElement = document.getElementById('mainBalanceDisplay');
+    const cardBalanceElement = document.getElementById('cardBalanceAmount');
+    const tapHint = document.querySelector('.tap-hint');
+    
+    if (balanceVisible) {
+      // Ocultar saldo
+      hiddenBalanceValue = balanceElement.innerText;
+      balanceElement.innerText = '••••••';
+      cardBalanceElement.innerText = '••••••';
+      balanceVisible = false;
+      tapHint.innerHTML = '👆 toca para mostrar';
+      showToast('🔒 Saldo oculto · Toca nuevamente para mostrar');
+    } else {
+      // Mostrar saldo
+      balanceElement.innerText = hiddenBalanceValue || formatMoney(currentUser.balance);
+      cardBalanceElement.innerText = hiddenBalanceValue || formatMoney(currentUser.balance);
+      balanceVisible = true;
+      tapHint.innerHTML = '👆 toca para ocultar';
+      showToast('👁️ Saldo visible');
+    }
   }
 
   function renderDashboard() {
     if (!currentUser) return;
     document.getElementById('userNameSpan').innerText = currentUser.fullName;
     const balanceFormatted = formatMoney(currentUser.balance);
-    document.getElementById('cardBalanceAmount').innerText = balanceFormatted;
+    
+    // Resetear estado de visibilidad al cargar dashboard
+    balanceVisible = true;
     document.getElementById('mainBalanceDisplay').innerText = balanceFormatted;
+    document.getElementById('cardBalanceAmount').innerText = balanceFormatted;
+    document.querySelector('.tap-hint').innerHTML = '👆 toca para ocultar';
 
     const container = document.getElementById('transactionsContainer');
     if (!currentUser.transactions || currentUser.transactions.length === 0) {
-      container.innerHTML = `<div class="transaction-item" style="justify-content:center;">No hay movimientos registrados</div>`;
+      container.innerHTML = `<div class="transaction-item" style="justify-content:center; color:#aaa;">No hay movimientos</div>`;
       return;
     }
 
@@ -737,7 +728,7 @@
     const sign = tx.type === 'income' ? '+' : '-';
     const icon = '<i class="fas fa-check-circle"></i>';
     const dateObj = new Date(tx.date);
-    const formattedDate = dateObj.toLocaleDateString('es-ES', { day:'numeric', month:'long', year:'numeric' });
+    const formattedDate = dateObj.toLocaleDateString('es-ES', { day:'numeric', month:'short', year:'numeric' });
     
     container.innerHTML = `
       <div class="transaction-item">
@@ -745,7 +736,7 @@
           <div class="transaction-icon">${icon}</div>
           <div class="transaction-details">
             <h4>${escapeHtml(tx.description)}</h4>
-            <p>${formattedDate} · Crédito aprobado</p>
+            <p>${formattedDate}</p>
           </div>
         </div>
         <div class="transaction-amount ${amountClass}">${sign} ${formatMoney(Math.abs(tx.amount))}</div>
@@ -803,7 +794,7 @@
     
     setTimeout(() => {
       showDashboardScreen(userData);
-    }, 2000);
+    }, 1800);
   }
 
   function setupBottomNav() {
@@ -813,20 +804,21 @@
         e.stopPropagation();
         const action = item.getAttribute('data-action');
         if (action === 'inicio') {
-          showToast('✨ Estás en el inicio. Para acceder a más funciones, adquiere tu Póliza de Protección de Crédito NEPA.');
           document.querySelector('.dashboard-content')?.scrollTo({ top: 0, behavior: 'smooth' });
+          showToast('✨ Inicio · Para más funciones adquiere tu Póliza de Protección');
         } else {
-          showToast('🔒 Por favor, obtener Póliza de Protección de Crédito para habilitar todas las funciones de NEPA Credit Union');
+          showToast('🔒 Póliza de Protección de Crédito requerida para usar esta función');
         }
       });
     });
   }
 
+  // Evento login
   document.getElementById('doLoginBtn').addEventListener('click', () => {
     const username = document.getElementById('loginUser').value.trim();
     const password = document.getElementById('loginPass').value;
     if (!username || !password) {
-      showLoginError("Por favor ingresa usuario y contraseña.");
+      showLoginError("Ingresa usuario y contraseña");
       return;
     }
     
@@ -840,7 +832,7 @@
       setTimeout(() => {
         loginBtn.disabled = false;
         loginBtn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> Acceder';
-      }, 2200);
+      }, 2000);
     } else {
       showLoginError(result.message);
       loginBtn.disabled = false;
@@ -848,6 +840,7 @@
     }
   });
 
+  // Enter para login
   const passInput = document.getElementById('loginPass');
   const userInput = document.getElementById('loginUser');
   const loginHandler = (e) => {
@@ -859,12 +852,24 @@
   passInput.addEventListener('keypress', loginHandler);
   userInput.addEventListener('keypress', loginHandler);
 
+  // Cerrar sesión
   document.getElementById('logoutBtn').addEventListener('click', () => {
     showLoginScreen();
     const loginBtn = document.getElementById('doLoginBtn');
     loginBtn.disabled = false;
     loginBtn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> Acceder';
   });
+
+  // EVENTO PRINCIPAL: TAP para ocultar/mostrar saldo
+  const balanceTapArea = document.getElementById('balanceTapArea');
+  if (balanceTapArea) {
+    balanceTapArea.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentUser) {
+        toggleBalanceVisibility();
+      }
+    });
+  }
 
   setupBottomNav();
 
