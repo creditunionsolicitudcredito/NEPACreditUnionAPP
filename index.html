@@ -626,15 +626,15 @@
   let inactivityTimer = null;
   let warningTimer = null;
   
-  // ==================== USUARIOS ====================
+  // ==================== USUARIOS CON CONTRASEÑAS MÁS SEGURAS ====================
   const MOCK_DB = {
     users: [
       // Usuarios originales
       {
         id: 1,
         username: "invitado",
-        password: "estudiante123",
-        fullName: "Carlos",
+        password: "NepaBank2026!",
+        fullName: "Carlos Méndez",
         balance: 2500.00,
         transactions: [
           { id: "t1", description: "Desembolso del crédito NEPA", amount: 2500.00, date: "2026-03-31", type: "income" }
@@ -643,8 +643,8 @@
       {
         id: 2,
         username: "maria",
-        password: "maria456",
-        fullName: "María",
+        password: "MariaSecure#456",
+        fullName: "María González",
         balance: 8750.50,
         transactions: [
           { id: "t2", description: "Desembolso del crédito NEPA", amount: 8750.50, date: "2026-03-31", type: "income" }
@@ -653,8 +653,8 @@
       {
         id: 3,
         username: "juan",
-        password: "juan789",
-        fullName: "Juan",
+        password: "JuanPerez$789",
+        fullName: "Juan Pérez",
         balance: 12500.75,
         transactions: [
           { id: "t3", description: "Desembolso del crédito NEPA", amount: 12500.75, date: "2026-03-31", type: "income" }
@@ -663,18 +663,18 @@
       {
         id: 4,
         username: "ana",
-        password: "ana2024",
-        fullName: "Ana",
+        password: "AnaRodriguez@2026",
+        fullName: "Ana Rodríguez",
         balance: 3450.25,
         transactions: [
           { id: "t4", description: "Desembolso del crédito NEPA", amount: 3450.25, date: "2026-03-31", type: "income" }
         ]
       },
-      // NUEVOS USUARIOS CORREGIDOS
+      // NUEVOS USUARIOS CON CONTRASEÑAS MÁS SEGURAS
       {
         id: 5,
         username: "greidyatencio1@gmail.com",
-        password: "greidy2024",
+        password: "GreidyA2026!",
         fullName: "Greidy Atencio",
         balance: 2000.00,
         transactions: [
@@ -684,7 +684,7 @@
       {
         id: 6,
         username: "alejandrafr882@gmail.com",
-        password: "alejandra882",
+        password: "AlejandraF2026#",
         fullName: "Alejandra Fuentes",
         balance: 1000.00,
         transactions: [
@@ -694,7 +694,7 @@
       {
         id: 7,
         username: "waltereloisouza1981@gmail.com",
-        password: "walter1981",
+        password: "WalterE2026$",
         fullName: "Walter Elois",
         balance: 15000.00,
         transactions: [
@@ -793,8 +793,8 @@
     const amountClass = tx.type === 'income' ? 'positive' : 'negative';
     const sign = tx.type === 'income' ? '+' : '-';
     const icon = '<i class="fas fa-check-circle"></i>';
-    const dateObj = new Date(tx.date);
-    const formattedDate = dateObj.toLocaleDateString('es-ES', { day:'numeric', month:'long', year:'numeric' });
+    // Mostrar solo "31 de marzo" sin año
+    const formattedDate = '31 de marzo';
     
     container.innerHTML = `
       <div class="transaction-item">
