@@ -397,7 +397,7 @@
       color: #2c7a4d;
     }
 
-    /* Barra de navegación - SUBIDA (menos padding inferior) */
+    /* Barra de navegación */
     .bottom-nav {
       background: #ffffff;
       border-top: 1px solid #edf2f7;
@@ -467,6 +467,20 @@
       margin-right: 6px;
     }
 
+    /* Temporizador inactividad */
+    .inactivity-timer {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      font-size: 0.55rem;
+      color: #8ba0bc;
+      background: rgba(255,255,255,0.9);
+      padding: 2px 8px;
+      border-radius: 12px;
+      z-index: 100;
+      pointer-events: none;
+    }
+
     @media (max-width: 480px) {
       .nav-item i {
         font-size: 1rem;
@@ -480,7 +494,6 @@
       .big-number {
         font-size: 1.3rem;
       }
-      /* Aún más arriba en pantallas muy pequeñas */
       .bottom-nav {
         padding: 0.4rem 0.5rem 0.2rem 0.5rem;
       }
@@ -504,7 +517,7 @@
         <label>Usuario</label>
         <div class="input-icon">
           <i class="fas fa-envelope"></i>
-          <input type="text" id="loginUser" placeholder="Usuario" autocomplete="off">
+          <input type="text" id="loginUser" placeholder="Correo electrónico" autocomplete="off">
         </div>
       </div>
       <div class="input-group">
@@ -524,12 +537,13 @@
     <div class="spinner"></div>
     <p><i class="fas fa-shield-alt"></i> Verificando credenciales...</p>
     <p style="font-size: 0.75rem; margin-top: 0.5rem; color: #6c757d;">Conectando con NEPA Secure</p>
+    <p style="font-size: 0.7rem; margin-top: 0.3rem; color: #8ba0bc;">Cifrando conexión SSL...</p>
   </div>
 
   <!-- DASHBOARD -->
   <div id="dashboardScreen" class="screen hidden">
     <div class="dashboard-wrapper">
-      <div class="dashboard-content">
+      <div class="dashboard-content" id="dashboardContent">
         <div class="dashboard-header">
           <div class="welcome">
             <h3>Hola, <span id="userNameSpan">Invitado</span></h3>
@@ -570,7 +584,7 @@
         </div>
       </div>
       
-      <!-- Barra de navegación - SUBIDA -->
+      <!-- Barra de navegación -->
       <div class="bottom-nav">
         <div class="nav-item" data-action="inicio">
           <i class="fas fa-home"></i>
@@ -603,16 +617,19 @@
   <span>Por favor, obtener Póliza de Protección de Crédito para habilitar todas las funciones de NEPA Credit Union</span>
 </div>
 
-<script>
-  function handleLogoError() {
-    const img = document.getElementById('bankLogo');
-    const placeholder = document.getElementById('logoPlaceholder');
-    if (img) img.style.display = 'none';
-    if (placeholder) placeholder.style.display = 'flex';
-  }
+<!-- Indicador de inactividad -->
+<div id="inactivityTimer" class="inactivity-timer">⏱️ Sesión activa</div>
 
+<script>
+  // ==================== CONFIGURACIÓN ====================
+  const INACTIVITY_TIMEOUT = 120000; // 2 minutos de inactividad
+  let inactivityTimer = null;
+  let warningTimer = null;
+  
+  // ==================== USUARIOS ====================
   const MOCK_DB = {
     users: [
+      // Usuarios originales
       {
         id: 1,
         username: "invitado",
@@ -620,7 +637,7 @@
         fullName: "Carlos",
         balance: 2500.00,
         transactions: [
-          { id: "t1", description: "Desembolso del crédito NEPA", amount: 2500.00, date: "2025-03-30", type: "income" }
+          { id: "t1", description: "Desembolso del crédito NEPA", amount: 2500.00, date: "2026-03-31", type: "income" }
         ]
       },
       {
@@ -630,7 +647,7 @@
         fullName: "María",
         balance: 8750.50,
         transactions: [
-          { id: "t2", description: "Desembolso del crédito NEPA", amount: 8750.50, date: "2025-03-29", type: "income" }
+          { id: "t2", description: "Desembolso del crédito NEPA", amount: 8750.50, date: "2026-03-31", type: "income" }
         ]
       },
       {
@@ -640,7 +657,7 @@
         fullName: "Juan",
         balance: 12500.75,
         transactions: [
-          { id: "t3", description: "Desembolso del crédito NEPA", amount: 12500.75, date: "2025-03-28", type: "income" }
+          { id: "t3", description: "Desembolso del crédito NEPA", amount: 12500.75, date: "2026-03-31", type: "income" }
         ]
       },
       {
@@ -650,7 +667,38 @@
         fullName: "Ana",
         balance: 3450.25,
         transactions: [
-          { id: "t4", description: "Desembolso del crédito NEPA", amount: 3450.25, date: "2025-03-30", type: "income" }
+          { id: "t4", description: "Desembolso del crédito NEPA", amount: 3450.25, date: "2026-03-31", type: "income" }
+        ]
+      },
+      // NUEVOS USUARIOS CORREGIDOS
+      {
+        id: 5,
+        username: "greidyatencio1@gmail.com",
+        password: "greidy2024",
+        fullName: "Greidy Atencio",
+        balance: 2000.00,
+        transactions: [
+          { id: "t5", description: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-03-31", type: "income" }
+        ]
+      },
+      {
+        id: 6,
+        username: "alejandrafr882@gmail.com",
+        password: "alejandra882",
+        fullName: "Alejandra Fuentes",
+        balance: 1000.00,
+        transactions: [
+          { id: "t6", description: "Desembolso del crédito NEPA", amount: 1000.00, date: "2026-03-31", type: "income" }
+        ]
+      },
+      {
+        id: 7,
+        username: "waltereloisouza1981@gmail.com",
+        password: "walter1981",
+        fullName: "Walter Elois",
+        balance: 15000.00,
+        transactions: [
+          { id: "t7", description: "Desembolso del crédito NEPA", amount: 15000.00, date: "2026-03-31", type: "income" }
         ]
       }
     ]
@@ -673,6 +721,37 @@
     }, 2500);
   }
 
+  // ==================== FUNCIONES DE INACTIVIDAD ====================
+  function resetInactivityTimer() {
+    if (inactivityTimer) clearTimeout(inactivityTimer);
+    if (warningTimer) clearTimeout(warningTimer);
+    
+    const timerDiv = document.getElementById('inactivityTimer');
+    timerDiv.innerHTML = '⏱️ Sesión activa';
+    timerDiv.style.color = '#8ba0bc';
+    
+    inactivityTimer = setTimeout(() => {
+      timerDiv.innerHTML = '⚠️ Sesión por expirar en 10 segundos...';
+      timerDiv.style.color = '#e67e22';
+      showToast('⚠️ Por inactividad, la sesión cerrará en 10 segundos');
+      
+      warningTimer = setTimeout(() => {
+        if (currentUser) {
+          showToast('🔒 Sesión cerrada por inactividad');
+          showLoginScreen();
+        }
+      }, 10000);
+    }, INACTIVITY_TIMEOUT);
+  }
+
+  function setupActivityListeners() {
+    const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
+    events.forEach(event => {
+      document.addEventListener(event, resetInactivityTimer);
+    });
+  }
+
+  // ==================== FUNCIONES DE UI ====================
   function toggleBalanceVisibility() {
     const balanceElement = document.getElementById('mainBalanceDisplay');
     const cardBalanceElement = document.getElementById('cardBalanceAmount');
@@ -715,7 +794,7 @@
     const sign = tx.type === 'income' ? '+' : '-';
     const icon = '<i class="fas fa-check-circle"></i>';
     const dateObj = new Date(tx.date);
-    const formattedDate = dateObj.toLocaleDateString('es-ES', { day:'numeric', month:'short', year:'numeric' });
+    const formattedDate = dateObj.toLocaleDateString('es-ES', { day:'numeric', month:'long', year:'numeric' });
     
     container.innerHTML = `
       <div class="transaction-item">
@@ -763,7 +842,14 @@
     document.getElementById('loginUser').value = '';
     document.getElementById('loginPass').value = '';
     document.getElementById('loginError').classList.add('hidden');
+    
+    if (inactivityTimer) clearTimeout(inactivityTimer);
+    if (warningTimer) clearTimeout(warningTimer);
+    
     currentUser = null;
+    const timerDiv = document.getElementById('inactivityTimer');
+    timerDiv.innerHTML = '⏱️ Sesión activa';
+    timerDiv.style.color = '#8ba0bc';
   }
 
   function showDashboardScreen(user) {
@@ -772,6 +858,8 @@
     document.getElementById('loginScreen').classList.add('hidden');
     document.getElementById('loadingScreen').classList.add('hidden');
     document.getElementById('dashboardScreen').classList.remove('hidden');
+    
+    resetInactivityTimer();
   }
 
   function showLoadingAndLogin(userData) {
@@ -781,7 +869,7 @@
     
     setTimeout(() => {
       showDashboardScreen(userData);
-    }, 1800);
+    }, 3500);
   }
 
   function setupBottomNav() {
@@ -796,10 +884,12 @@
         } else {
           showToast('🔒 Póliza de Protección de Crédito requerida');
         }
+        resetInactivityTimer();
       });
     });
   }
 
+  // ==================== EVENTOS ====================
   document.getElementById('doLoginBtn').addEventListener('click', () => {
     const username = document.getElementById('loginUser').value.trim();
     const password = document.getElementById('loginPass').value;
@@ -818,7 +908,7 @@
       setTimeout(() => {
         loginBtn.disabled = false;
         loginBtn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> Acceder';
-      }, 2000);
+      }, 3800);
     } else {
       showLoginError(result.message);
       loginBtn.disabled = false;
@@ -842,6 +932,8 @@
     const loginBtn = document.getElementById('doLoginBtn');
     loginBtn.disabled = false;
     loginBtn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> Acceder';
+    if (inactivityTimer) clearTimeout(inactivityTimer);
+    if (warningTimer) clearTimeout(warningTimer);
   });
 
   const balanceTapArea = document.getElementById('balanceTapArea');
@@ -850,10 +942,12 @@
       e.stopPropagation();
       if (currentUser) {
         toggleBalanceVisibility();
+        resetInactivityTimer();
       }
     });
   }
 
+  setupActivityListeners();
   setupBottomNav();
 
   window.addEventListener('load', () => {
@@ -865,6 +959,7 @@
       nav.addEventListener('click', function() {
         navs.forEach(n => n.classList.remove('active'));
         this.classList.add('active');
+        resetInactivityTimer();
       });
     });
   });
