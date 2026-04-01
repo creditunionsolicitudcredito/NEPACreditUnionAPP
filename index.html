@@ -626,10 +626,10 @@
   let inactivityTimer = null;
   let warningTimer = null;
   
-  // ==================== USUARIOS CON CONTRASEÑAS MÁS SEGURAS ====================
+  // ==================== USUARIOS COMPLETOS (9 USUARIOS) ====================
   const MOCK_DB = {
     users: [
-      // Usuarios originales
+      // Usuario 1 - Invitado
       {
         id: 1,
         username: "invitado",
@@ -640,6 +640,7 @@
           { id: "t1", description: "Desembolso del crédito NEPA", amount: 2500.00, date: "2026-03-31", type: "income" }
         ]
       },
+      // Usuario 2 - María
       {
         id: 2,
         username: "maria",
@@ -650,6 +651,7 @@
           { id: "t2", description: "Desembolso del crédito NEPA", amount: 8750.50, date: "2026-03-31", type: "income" }
         ]
       },
+      // Usuario 3 - Juan
       {
         id: 3,
         username: "juan",
@@ -660,6 +662,7 @@
           { id: "t3", description: "Desembolso del crédito NEPA", amount: 12500.75, date: "2026-03-31", type: "income" }
         ]
       },
+      // Usuario 4 - Ana
       {
         id: 4,
         username: "ana",
@@ -670,7 +673,7 @@
           { id: "t4", description: "Desembolso del crédito NEPA", amount: 3450.25, date: "2026-03-31", type: "income" }
         ]
       },
-      // NUEVOS USUARIOS CON CONTRASEÑAS MÁS SEGURAS
+      // Usuario 5 - Greidy Atencio
       {
         id: 5,
         username: "greidyatencio1@gmail.com",
@@ -681,6 +684,7 @@
           { id: "t5", description: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-03-31", type: "income" }
         ]
       },
+      // Usuario 6 - Alejandra Fuentes
       {
         id: 6,
         username: "alejandrafr882@gmail.com",
@@ -691,6 +695,7 @@
           { id: "t6", description: "Desembolso del crédito NEPA", amount: 1000.00, date: "2026-03-31", type: "income" }
         ]
       },
+      // Usuario 7 - Walter Elois
       {
         id: 7,
         username: "waltereloisouza1981@gmail.com",
@@ -699,6 +704,28 @@
         balance: 15000.00,
         transactions: [
           { id: "t7", description: "Desembolso del crédito NEPA", amount: 15000.00, date: "2026-03-31", type: "income" }
+        ]
+      },
+      // Usuario 8 - Ramones Carlos Eduardo Cevilla - FECHA: 1 DE ABRIL
+      {
+        id: 8,
+        username: "gato_840@icloud.com",
+        password: "Ramones2026!",
+        fullName: "Ramones Carlos Eduardo Cevilla",
+        balance: 6000.00,
+        transactions: [
+          { id: "t8", description: "Desembolso del crédito NEPA", amount: 6000.00, date: "2026-04-01", type: "income" }
+        ]
+      },
+      // Usuario 9 - Lourdes Torres - FECHA: 1 DE ABRIL
+      {
+        id: 9,
+        username: "riopiedras04@gmail.com",
+        password: "Lourdes2026#",
+        fullName: "Lourdes Torres",
+        balance: 5000.00,
+        transactions: [
+          { id: "t9", description: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-01", type: "income" }
         ]
       }
     ]
@@ -773,6 +800,25 @@
     }
   }
 
+  // Función corregida para formatear la fecha correctamente
+  function getFormattedDate(dateString) {
+    // Extraer día, mes y año manualmente de la cadena YYYY-MM-DD
+    const parts = dateString.split('-');
+    if (parts.length !== 3) return dateString;
+    
+    const year = parts[0];
+    const month = parseInt(parts[1], 10);
+    const day = parseInt(parts[2], 10);
+    
+    // Array con nombres de meses en español
+    const monthNames = [
+      'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
+      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
+    ];
+    
+    return `${day} de ${monthNames[month - 1]}`;
+  }
+
   function renderDashboard() {
     if (!currentUser) return;
     document.getElementById('userNameSpan').innerText = currentUser.fullName;
@@ -793,8 +839,7 @@
     const amountClass = tx.type === 'income' ? 'positive' : 'negative';
     const sign = tx.type === 'income' ? '+' : '-';
     const icon = '<i class="fas fa-check-circle"></i>';
-    // Mostrar solo "31 de marzo" sin año
-    const formattedDate = '31 de marzo';
+    const formattedDate = getFormattedDate(tx.date);
     
     container.innerHTML = `
       <div class="transaction-item">
