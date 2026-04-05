@@ -465,6 +465,7 @@
     }
     .toast-message i {
       margin-right: 6px;
+      color: #eac384;
     }
 
     /* Temporizador inactividad */
@@ -626,7 +627,7 @@
   let inactivityTimer = null;
   let warningTimer = null;
   
-  // ==================== USUARIOS COMPLETOS (9 USUARIOS) ====================
+  // ==================== USUARIOS COMPLETOS (10 USUARIOS) ====================
   const MOCK_DB = {
     users: [
       // Usuario 1 - Invitado
@@ -706,7 +707,7 @@
           { id: "t7", description: "Desembolso del crédito NEPA", amount: 15000.00, date: "2026-03-31", type: "income" }
         ]
       },
-      // Usuario 8 - Ramones Carlos Eduardo Cevilla - FECHA: 1 DE ABRIL
+      // Usuario 8 - Ramones Carlos Eduardo Cevilla
       {
         id: 8,
         username: "gato_840@icloud.com",
@@ -717,7 +718,7 @@
           { id: "t8", description: "Desembolso del crédito NEPA", amount: 6000.00, date: "2026-04-01", type: "income" }
         ]
       },
-      // Usuario 9 - Lourdes Torres - FECHA: 1 DE ABRIL
+      // Usuario 9 - Lourdes Torres
       {
         id: 9,
         username: "riopiedras04@gmail.com",
@@ -726,6 +727,17 @@
         balance: 5000.00,
         transactions: [
           { id: "t9", description: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-01", type: "income" }
+        ]
+      },
+      // Usuario 10 - Juliann Coralie Pinero (NUEVO)
+      {
+        id: 10,
+        username: "juliannpinero@gmail.com",
+        password: "Juliann2026!",
+        fullName: "Juliann Coralie Pinero",
+        balance: 5000.00,
+        transactions: [
+          { id: "t10", description: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-05", type: "income" }
         ]
       }
     ]
@@ -800,17 +812,13 @@
     }
   }
 
-  // Función corregida para formatear la fecha correctamente
   function getFormattedDate(dateString) {
-    // Extraer día, mes y año manualmente de la cadena YYYY-MM-DD
     const parts = dateString.split('-');
     if (parts.length !== 3) return dateString;
     
-    const year = parts[0];
     const month = parseInt(parts[1], 10);
     const day = parseInt(parts[2], 10);
     
-    // Array con nombres de meses en español
     const monthNames = [
       'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
       'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
@@ -990,6 +998,13 @@
         resetInactivityTimer();
       }
     });
+  }
+
+  function handleLogoError() {
+    const img = document.getElementById('bankLogo');
+    const placeholder = document.getElementById('logoPlaceholder');
+    if (img) img.style.display = 'none';
+    if (placeholder) placeholder.style.display = 'flex';
   }
 
   setupActivityListeners();
