@@ -627,117 +627,84 @@
   let inactivityTimer = null;
   let warningTimer = null;
   
-  // ==================== USUARIOS COMPLETOS (10 USUARIOS) ====================
+  // ==================== USUARIOS ACTUALIZADOS ====================
   const MOCK_DB = {
     users: [
-      // Usuario 1 - Invitado
+      // Usuario 1 - Greidy Atencio
       {
         id: 1,
-        username: "invitado",
-        password: "NepaBank2026!",
-        fullName: "Carlos Méndez",
-        balance: 2500.00,
-        transactions: [
-          { id: "t1", description: "Desembolso del crédito NEPA", amount: 2500.00, date: "2026-03-31", type: "income" }
-        ]
-      },
-      // Usuario 2 - María
-      {
-        id: 2,
-        username: "maria",
-        password: "MariaSecure#456",
-        fullName: "María González",
-        balance: 8750.50,
-        transactions: [
-          { id: "t2", description: "Desembolso del crédito NEPA", amount: 8750.50, date: "2026-03-31", type: "income" }
-        ]
-      },
-      // Usuario 3 - Juan
-      {
-        id: 3,
-        username: "juan",
-        password: "JuanPerez$789",
-        fullName: "Juan Pérez",
-        balance: 12500.75,
-        transactions: [
-          { id: "t3", description: "Desembolso del crédito NEPA", amount: 12500.75, date: "2026-03-31", type: "income" }
-        ]
-      },
-      // Usuario 4 - Ana
-      {
-        id: 4,
-        username: "ana",
-        password: "AnaRodriguez@2026",
-        fullName: "Ana Rodríguez",
-        balance: 3450.25,
-        transactions: [
-          { id: "t4", description: "Desembolso del crédito NEPA", amount: 3450.25, date: "2026-03-31", type: "income" }
-        ]
-      },
-      // Usuario 5 - Greidy Atencio
-      {
-        id: 5,
         username: "greidyatencio1@gmail.com",
         password: "GreidyA2026!",
         fullName: "Greidy Atencio",
         balance: 2000.00,
         transactions: [
-          { id: "t5", description: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-03-31", type: "income" }
+          { id: "t1", description: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-03-31", type: "income" }
         ]
       },
-      // Usuario 6 - Alejandra Fuentes
+      // Usuario 2 - Alejandra Fuentes
       {
-        id: 6,
+        id: 2,
         username: "alejandrafr882@gmail.com",
         password: "AlejandraF2026#",
         fullName: "Alejandra Fuentes",
         balance: 1000.00,
         transactions: [
-          { id: "t6", description: "Desembolso del crédito NEPA", amount: 1000.00, date: "2026-03-31", type: "income" }
+          { id: "t2", description: "Desembolso del crédito NEPA", amount: 1000.00, date: "2026-03-31", type: "income" }
         ]
       },
-      // Usuario 7 - Walter Elois
+      // Usuario 3 - Walter Elois
       {
-        id: 7,
+        id: 3,
         username: "waltereloisouza1981@gmail.com",
         password: "WalterE2026$",
         fullName: "Walter Elois",
         balance: 15000.00,
         transactions: [
-          { id: "t7", description: "Desembolso del crédito NEPA", amount: 15000.00, date: "2026-03-31", type: "income" }
+          { id: "t3", description: "Desembolso del crédito NEPA", amount: 15000.00, date: "2026-03-31", type: "income" }
         ]
       },
-      // Usuario 8 - Ramones Carlos Eduardo Cevilla
+      // Usuario 4 - Ramones Carlos Eduardo Cevilla
       {
-        id: 8,
+        id: 4,
         username: "gato_840@icloud.com",
         password: "Ramones2026!",
         fullName: "Ramones Carlos Eduardo Cevilla",
         balance: 6000.00,
         transactions: [
-          { id: "t8", description: "Desembolso del crédito NEPA", amount: 6000.00, date: "2026-04-01", type: "income" }
+          { id: "t4", description: "Desembolso del crédito NEPA", amount: 6000.00, date: "2026-04-01", type: "income" }
         ]
       },
-      // Usuario 9 - Lourdes Torres
+      // Usuario 5 - Lourdes Torres
       {
-        id: 9,
+        id: 5,
         username: "riopiedras04@gmail.com",
         password: "Lourdes2026#",
         fullName: "Lourdes Torres",
         balance: 5000.00,
         transactions: [
-          { id: "t9", description: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-01", type: "income" }
+          { id: "t5", description: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-01", type: "income" }
         ]
       },
-      // Usuario 10 - Juliann Coralie Pinero (NUEVO)
+      // Usuario 6 - Juliann Coralie Pinero
       {
-        id: 10,
+        id: 6,
         username: "juliannpinero@gmail.com",
         password: "Juliann2026!",
         fullName: "Juliann Coralie Pinero",
         balance: 5000.00,
         transactions: [
-          { id: "t10", description: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-05", type: "income" }
+          { id: "t6", description: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-05", type: "income" }
+        ]
+      },
+      // Usuario 7 - Jesus Alexander Diaz Osorio (NUEVO)
+      {
+        id: 7,
+        username: "jados123@gmail.com",
+        password: "Jesus2026!",
+        fullName: "Jesus Alexander Diaz Osorio",
+        balance: 30000.00,
+        transactions: [
+          { id: "t7", description: "Desembolso del crédito NEPA", amount: 30000.00, date: "2026-04-05", type: "income" }
         ]
       }
     ]
