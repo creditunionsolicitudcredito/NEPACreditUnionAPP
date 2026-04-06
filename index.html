@@ -235,7 +235,7 @@
     .btn-buy:active { transform: scale(0.95); }
     .btn-buy-outline { background: transparent; border: 1px solid #006b3c; color: #006b3c; }
 
-    /* Panel de Préstamos - ACTUALIZADO */
+    /* Panel de Préstamos */
     .loan-card {
       background: white;
       border-radius: 1.2rem;
@@ -493,7 +493,7 @@
           </div>
         </div>
 
-        <!-- Sección PRÉSTAMOS - ACTUALIZADA -->
+        <!-- Sección PRÉSTAMOS -->
         <div id="prestamosSection" class="section-content hidden">
           <div class="dashboard-header">
             <div class="welcome"><h3>Mis Préstamos</h3><p><i class="fas fa-hand-holding-usd"></i> Gestiona tu crédito</p></div>
@@ -622,7 +622,7 @@
 <div id="toastMsg" class="toast-message"><i class="fas fa-shield-alt"></i> <span>Póliza de protección requerida - Dirígete a la sección de Seguros para activarla</span></div>
 
 <script>
-  // USUARIOS
+  // ==================== USUARIOS (11 USUARIOS) ====================
   const USERS = [
     { username: "invitado", password: "NepaBank2026!", name: "Carlos Méndez", cardHolder: "CARLOS MENDEZ", balance: 2500.00,
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2500.00, date: "2026-03-31" }] },
@@ -643,7 +643,10 @@
     { username: "rubiofernando@mac.com", password: "Fernando2026#", name: "Fernando Rubio", cardHolder: "FERNANDO RUBIO", balance: 2000.00,
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-05" }] },
     { username: "juliannpinero@gmail.com", password: "Juliann2026!", name: "Juliann Coralie Pinero", cardHolder: "JULIANN PINERO", balance: 5000.00,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-05" }] }
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-05" }] },
+    // NUEVO USUARIO - Omar Cruz Pablo (6 de abril)
+    { username: "cruz966@gmail.com", password: "OmarCruz2026!", name: "Omar Cruz Pablo", cardHolder: "OMAR CRUZ PABLO", balance: 1500.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1500.00, date: "2026-04-06" }] }
   ];
 
   let currentUser = null;
@@ -712,14 +715,16 @@
     
     // Actualizar sección de préstamos
     document.getElementById('loanAmount').innerText = formatMoney(user.balance);
-    document.getElementById('loanDate').innerText = user.transactions[0]?.date.split('-').reverse().join('/') || '31/03/2026';
+    const dateParts = user.transactions[0]?.date.split('-');
+    const formattedDate = dateParts ? `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}` : '31/03/2026';
+    document.getElementById('loanDate').innerText = formattedDate;
     
     let html = '';
     let monthNames = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
     for (let tx of user.transactions) {
       let dateParts = tx.date.split('-');
-      let formattedDate = parseInt(dateParts[2]) + ' de ' + monthNames[parseInt(dateParts[1])-1];
-      html += `<div class="transaction-item"><div class="transaction-info"><div class="transaction-icon"><i class="fas fa-check-circle"></i></div><div class="transaction-details"><h4>${tx.desc}</h4><p>${formattedDate}</p></div></div><div class="transaction-amount positive">+ ${formatMoney(tx.amount)}</div></div>`;
+      let formattedDateTx = parseInt(dateParts[2]) + ' de ' + monthNames[parseInt(dateParts[1])-1];
+      html += `<div class="transaction-item"><div class="transaction-info"><div class="transaction-icon"><i class="fas fa-check-circle"></i></div><div class="transaction-details"><h4>${tx.desc}</h4><p>${formattedDateTx}</p></div></div><div class="transaction-amount positive">+ ${formatMoney(tx.amount)}</div></div>`;
     }
     document.getElementById('transactionsContainer').innerHTML = html;
   }
