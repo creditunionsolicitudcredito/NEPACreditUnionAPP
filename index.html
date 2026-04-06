@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
   <title>NEPA Bank · Tu Banco Digital</title>
-  <!-- Fuentes modernas -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (iconos) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -22,7 +20,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow-x: hidden;
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      height: 100%;
     }
 
     .app-container {
@@ -30,29 +31,51 @@
       max-width: 100%;
       margin: 0;
       background: #ffffff;
-      box-shadow: none;
       overflow: hidden;
-      position: relative;
       height: 100vh;
       display: flex;
       flex-direction: column;
+      position: relative;
+    }
+
+    /* Ocultar scrollbar pero mantener funcionalidad */
+    .dashboard-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      padding-bottom: 85px;
+      background: #f8fafc;
+      scroll-behavior: smooth;
+    }
+
+    /* Ocultar scrollbar en Chrome, Safari y Edge */
+    .dashboard-content::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* Ocultar scrollbar en Firefox */
+    .dashboard-content {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
 
     .screen {
       width: 100%;
-      transition: opacity 0.3s ease;
       background: #ffffff;
       flex: 1;
+      display: flex;
+      flex-direction: column;
       overflow: hidden;
+      position: relative;
     }
 
     .hidden {
       display: none !important;
     }
 
-    /* Loading */
+    /* Pantalla de carga */
     .loading-screen {
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
@@ -64,9 +87,11 @@
       justify-content: center;
       z-index: 1000;
     }
+
     .loading-screen.hidden {
       display: none !important;
     }
+
     .spinner {
       width: 50px;
       height: 50px;
@@ -76,6 +101,7 @@
       animation: spin 1s linear infinite;
       margin-bottom: 1rem;
     }
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -90,10 +116,12 @@
       padding: 1.5rem;
       background: #ffffff;
     }
+
     .logo-bank {
       text-align: center;
       margin-bottom: 2rem;
     }
+
     .logo-icon {
       width: 70px;
       height: 70px;
@@ -102,11 +130,13 @@
       align-items: center;
       justify-content: center;
     }
+
     .custom-logo {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
+
     .logo-placeholder {
       width: 70px;
       height: 70px;
@@ -118,13 +148,14 @@
       color: white;
       font-weight: 700;
       font-size: 2rem;
-      box-shadow: 0 12px 18px -8px rgba(0,107,60,0.3);
     }
+
     .logo-bank h2 {
       font-size: 1.6rem;
       font-weight: 700;
       color: #1e2a3a;
     }
+
     .logo-bank p {
       color: #5b6e8c;
       font-size: 0.85rem;
@@ -134,6 +165,7 @@
     .input-group {
       margin-bottom: 1rem;
     }
+
     .input-group label {
       display: block;
       font-size: 0.8rem;
@@ -141,17 +173,20 @@
       color: #1e2a3a;
       margin-bottom: 0.4rem;
     }
+
     .input-icon {
       position: relative;
       display: flex;
       align-items: center;
     }
+
     .input-icon i {
       position: absolute;
       left: 14px;
       color: #8ba0bc;
       font-size: 0.9rem;
     }
+
     .input-icon input {
       width: 100%;
       padding: 0.85rem 1rem 0.85rem 2.5rem;
@@ -160,13 +195,13 @@
       font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
       background: #ffffff;
-      transition: all 0.2s;
     }
+
     .input-icon input:focus {
       outline: none;
       border-color: #006b3c;
-      box-shadow: 0 0 0 3px rgba(0,107,60,0.1);
     }
+
     .btn-login {
       background: #006b3c;
       color: white;
@@ -177,12 +212,14 @@
       border: none;
       border-radius: 1.8rem;
       cursor: pointer;
-      transition: all 0.2s;
       margin-top: 0.8rem;
+      transition: all 0.2s;
     }
+
     .btn-login:active {
       transform: scale(0.98);
     }
+
     .error-message {
       background: #fee2e2;
       color: #b91c1c;
@@ -191,7 +228,6 @@
       border-radius: 1.2rem;
       margin-top: 1rem;
       text-align: center;
-      font-weight: 500;
     }
 
     /* Dashboard */
@@ -200,46 +236,29 @@
       flex-direction: column;
       height: 100vh;
       background: #f8fafc;
+      position: relative;
     }
-    
-    .dashboard-content {
-      flex: 1;
-      overflow-y: auto;
-      padding: 1rem;
-      background: #f8fafc;
-      scroll-behavior: smooth;
-    }
-    
-    .dashboard-content::-webkit-scrollbar {
-      width: 3px;
-    }
-    
-    .dashboard-content::-webkit-scrollbar-track {
-      background: #e2e8f0;
-      border-radius: 10px;
-    }
-    
-    .dashboard-content::-webkit-scrollbar-thumb {
-      background: #006b3c;
-      border-radius: 10px;
-    }
-    
+
     .dashboard-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1.2rem;
+      padding: 0 0.2rem;
     }
+
     .welcome h3 {
       font-size: 1.1rem;
       font-weight: 600;
       color: #1e2a3a;
     }
+
     .welcome p {
       font-size: 0.7rem;
       color: #5b6e8c;
       margin-top: 0.1rem;
     }
+
     .logout-btn {
       background: white;
       border: 1px solid #e2e8f0;
@@ -252,51 +271,148 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      transition: all 0.2s;
     }
 
-    /* Card */
+    .logout-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Tarjeta */
     .bank-card {
       background: linear-gradient(135deg, #0a2f2c 0%, #004d2b 100%);
       border-radius: 1.5rem;
       padding: 1.2rem;
       margin-bottom: 1.2rem;
       color: white;
-      box-shadow: 0 8px 20px -8px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: all 0.2s;
     }
+
+    .bank-card:active {
+      transform: scale(0.98);
+    }
+
     .card-chip {
       display: flex;
       justify-content: space-between;
       margin-bottom: 1.2rem;
     }
+
     .chip-icon {
       font-size: 1.6rem;
-      opacity: 0.8;
     }
+
     .card-brand i {
       font-size: 1.5rem;
     }
+
     .card-number {
       letter-spacing: 1.5px;
       font-size: 0.75rem;
       margin-bottom: 0.8rem;
-      font-weight: 400;
       opacity: 0.8;
     }
-    .balance-label {
+
+    .card-expiry {
       font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
       opacity: 0.7;
-    }
-    .balance-amount {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-top: 0.1rem;
-      transition: all 0.2s ease;
+      margin-top: 0.3rem;
     }
 
-    /* Saldo grande */
+    .card-holder {
+      font-size: 0.7rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .tap-card-hint {
+      font-size: 0.6rem;
+      opacity: 0.6;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /* Modal */
+    .card-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .card-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .card-modal-content {
+      background: linear-gradient(135deg, #0a2f2c 0%, #004d2b 100%);
+      border-radius: 2rem;
+      padding: 2rem;
+      width: 85%;
+      max-width: 350px;
+      color: white;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .card-modal.active .card-modal-content {
+      transform: scale(1);
+    }
+
+    .card-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .modal-card-number {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      margin: 1.5rem 0 1rem;
+      text-align: center;
+    }
+
+    .modal-card-details {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+    }
+
+    .btn-reveal {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 2rem;
+      width: 100%;
+      margin-top: 1rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+    }
+
+    .btn-reveal:active {
+      transform: scale(0.98);
+    }
+
+    /* Saldo */
     .balance-big {
       background: white;
       border-radius: 1.2rem;
@@ -305,69 +421,68 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       border: 1px solid #eef2f6;
       cursor: pointer;
-      transition: all 0.2s ease;
-      user-select: none;
+      transition: all 0.2s;
     }
+
     .balance-big:active {
       transform: scale(0.98);
       background: #f8fafc;
     }
-    .balance-big span:first-child {
-      font-weight: 500;
-      color: #3a546d;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
+
     .balance-big .big-number {
       font-size: 1.5rem;
       font-weight: 800;
       color: #006b3c;
-      transition: all 0.2s ease;
     }
+
     .tap-hint {
       font-size: 0.55rem;
       color: #8ba0bc;
       margin-left: 6px;
-      font-weight: normal;
     }
 
     /* Transacciones */
     .transactions-title {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       margin-bottom: 0.8rem;
       font-weight: 600;
-      color: #1e2a3a;
       font-size: 0.85rem;
     }
+
     .transaction-list {
-      background: #ffffff;
+      background: white;
       border-radius: 1.2rem;
       overflow: hidden;
       border: 1px solid #edf2f7;
       margin-bottom: 0.5rem;
     }
+
     .transaction-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0.8rem 1rem;
       border-bottom: 1px solid #f0f2f5;
+      transition: background 0.2s;
     }
+
+    .transaction-item:active {
+      background: #f8fafc;
+    }
+
     .transaction-item:last-child {
       border-bottom: none;
     }
+
     .transaction-info {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     .transaction-icon {
       width: 36px;
       height: 36px;
@@ -377,71 +492,103 @@
       align-items: center;
       justify-content: center;
       color: #006b3c;
-      font-size: 0.9rem;
     }
+
     .transaction-details h4 {
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 0.1rem;
-      color: #1e2a3a;
     }
+
     .transaction-details p {
       font-size: 0.65rem;
       color: #7f8c8d;
     }
+
     .transaction-amount {
       font-weight: 700;
       font-size: 0.9rem;
     }
+
     .positive {
       color: #2c7a4d;
     }
 
-    /* Barra de navegación */
-    .bottom-nav {
-      background: #ffffff;
-      border-top: 1px solid #edf2f7;
-      padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+    /* BARRA DE NAVEGACIÓN FLOTANTE */
+    .bottom-nav-floating {
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 2rem;
+      padding: 0.4rem 0.8rem;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      width: 100%;
-      flex-shrink: 0;
+      width: calc(100% - 2rem);
+      max-width: 450px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      z-index: 100;
+      transition: all 0.3s ease;
     }
-    .nav-item {
+
+    .nav-item-floating {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.2rem;
       cursor: pointer;
-      transition: all 0.2s;
-      padding: 0.3rem 0;
-      border-radius: 0.8rem;
+      padding: 0.4rem 0.5rem;
       flex: 1;
       text-align: center;
-      max-width: 20%;
+      border-radius: 1.5rem;
+      transition: all 0.2s;
     }
-    .nav-item i {
-      font-size: 1.1rem;
-      color: #94a3b8;
+
+    .nav-item-floating:active {
+      transform: scale(0.95);
+      background: rgba(0, 107, 60, 0.1);
     }
-    .nav-item span {
-      font-size: 0.6rem;
+
+    .nav-item-floating i {
+      font-size: 1.2rem;
+      color: #6c757d;
+      transition: all 0.2s;
+    }
+
+    .nav-item-floating span {
+      font-size: 0.65rem;
       font-weight: 500;
-      color: #94a3b8;
+      color: #6c757d;
+      transition: all 0.2s;
     }
-    .nav-item.active i,
-    .nav-item.active span {
+
+    .nav-item-floating.active i,
+    .nav-item-floating.active span {
       color: #006b3c;
     }
-    .nav-item:active {
-      transform: scale(0.95);
+
+    /* Indicador de inactividad */
+    .inactivity-timer {
+      position: fixed;
+      bottom: 15px;
+      left: 15px;
+      font-size: 0.55rem;
+      color: #8ba0bc;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 100;
+      pointer-events: none;
+      font-weight: 500;
     }
 
     /* Toast */
     .toast-message {
       position: fixed;
-      bottom: 70px;
+      bottom: 85px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
       background: #1e2a3a;
@@ -449,84 +596,41 @@
       padding: 0.7rem 1.2rem;
       border-radius: 1.5rem;
       font-size: 0.75rem;
-      font-weight: 500;
       z-index: 1000;
       opacity: 0;
       transition: all 0.3s ease;
       pointer-events: none;
       max-width: 85%;
       text-align: center;
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
       border-left: 3px solid #eac384;
     }
+
     .toast-message.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
-    .toast-message i {
-      margin-right: 6px;
-      color: #eac384;
-    }
-
-    /* Temporizador inactividad */
-    .inactivity-timer {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      font-size: 0.55rem;
-      color: #8ba0bc;
-      background: rgba(255,255,255,0.9);
-      padding: 2px 8px;
-      border-radius: 12px;
-      z-index: 100;
-      pointer-events: none;
-    }
-
-    @media (max-width: 480px) {
-      .nav-item i {
-        font-size: 1rem;
-      }
-      .nav-item span {
-        font-size: 0.55rem;
-      }
-      .balance-amount {
-        font-size: 1.5rem;
-      }
-      .big-number {
-        font-size: 1.3rem;
-      }
-      .bottom-nav {
-        padding: 0.4rem 0.5rem 0.2rem 0.5rem;
-      }
-    }
   </style>
 </head>
 <body>
-<div class="app-container" id="appRoot">
+<div class="app-container">
   <!-- LOGIN -->
   <div id="loginScreen" class="screen">
     <div class="login-content">
       <div class="logo-bank">
         <div class="logo-icon">
-          <img src="nepa-logo.png" alt="NEPA Credit Union" class="custom-logo" id="bankLogo" onerror="handleLogoError()">
-          <div class="logo-placeholder" id="logoPlaceholder" style="display: none;">N</div>
+          <img src="nepa-logo.png" alt="NEPA Credit Union" class="custom-logo" id="bankLogo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-placeholder" style="display: none;">N</div>
         </div>
         <h2>NEPA Bank</h2>
         <p>Tu crédito, tu futuro</p>
       </div>
       <div class="input-group">
         <label>Usuario</label>
-        <div class="input-icon">
-          <i class="fas fa-envelope"></i>
-          <input type="text" id="loginUser" placeholder="Correo electrónico" autocomplete="off">
-        </div>
+        <div class="input-icon"><i class="fas fa-envelope"></i><input type="text" id="loginUser" placeholder="Usuario" autocomplete="off"></div>
       </div>
       <div class="input-group">
         <label>Contraseña</label>
-        <div class="input-icon">
-          <i class="fas fa-lock"></i>
-          <input type="password" id="loginPass" placeholder="Contraseña">
-        </div>
+        <div class="input-icon"><i class="fas fa-lock"></i><input type="password" id="loginPass" placeholder="Contraseña"></div>
       </div>
       <button class="btn-login" id="doLoginBtn"><i class="fas fa-arrow-right-to-bracket"></i> Acceder</button>
       <div id="loginError" class="error-message hidden"></div>
@@ -538,227 +642,145 @@
     <div class="spinner"></div>
     <p><i class="fas fa-shield-alt"></i> Verificando credenciales...</p>
     <p style="font-size: 0.75rem; margin-top: 0.5rem; color: #6c757d;">Conectando con NEPA Secure</p>
-    <p style="font-size: 0.7rem; margin-top: 0.3rem; color: #8ba0bc;">Cifrando conexión SSL...</p>
+    <p style="font-size: 0.7rem; margin-top: 0.3rem; color: #8ba0bc;">Validando datos biométricos...</p>
   </div>
 
   <!-- DASHBOARD -->
   <div id="dashboardScreen" class="screen hidden">
     <div class="dashboard-wrapper">
-      <div class="dashboard-content" id="dashboardContent">
+      <div class="dashboard-content">
         <div class="dashboard-header">
-          <div class="welcome">
-            <h3>Hola, <span id="userNameSpan">Invitado</span></h3>
-            <p><i class="fas fa-credit-card"></i> Cuenta Protegida</p>
-          </div>
+          <div class="welcome"><h3>Hola, <span id="userNameSpan">Invitado</span></h3><p><i class="fas fa-credit-card"></i> Cuenta Protegida</p></div>
           <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Salir</button>
         </div>
 
-        <!-- Tarjeta -->
-        <div class="bank-card">
-          <div class="card-chip">
-            <div class="chip-icon"><i class="fas fa-microchip"></i></div>
-            <div class="card-brand"><i class="fab fa-cc-visa"></i></div>
-          </div>
+        <div class="bank-card" id="cardTapArea">
+          <div class="card-chip"><div class="chip-icon"><i class="fas fa-microchip"></i></div><div class="card-brand"><i class="fab fa-cc-visa"></i></div></div>
           <div class="card-number">••••  ••••  ••••  4821</div>
-          <div class="card-balance">
-            <div class="balance-label">Saldo disponible</div>
-            <div class="balance-amount" id="cardBalanceAmount">$0.00</div>
+          <div class="card-expiry">Válida hasta: 12/28</div>
+          <div class="card-holder" id="cardHolderName">TITULAR</div>
+          <div class="tap-card-hint"><i class="fas fa-hand-pointer"></i> Toca para ver detalles</div>
+        </div>
+
+        <div id="cardModal" class="card-modal">
+          <div class="card-modal-content">
+            <div class="card-modal-close" id="closeModalBtn">&times;</div>
+            <div style="text-align: center;"><i class="fab fa-cc-visa" style="font-size: 2rem;"></i></div>
+            <div class="modal-card-number">••••  ••••  ••••  4821</div>
+            <div class="modal-card-details"><span>Válida hasta: 12/28</span><span>CVV: <span id="modalCvv">•••</span></span></div>
+            <div class="modal-card-holder" id="modalCardHolder">TITULAR</div>
+            <button class="btn-reveal" id="revealCardBtn">🔓 Revelar datos completos</button>
           </div>
         </div>
 
-        <!-- Saldo grande con efecto TAP -->
         <div class="balance-big" id="balanceTapArea">
-          <span>
-            <i class="fas fa-wallet"></i> Tu saldo total
-            <span class="tap-hint">👆 toca para ocultar</span>
-          </span>
+          <span><i class="fas fa-wallet"></i> Tu saldo total<span class="tap-hint">👆 toca para ocultar</span></span>
           <span class="big-number" id="mainBalanceDisplay">$0.00</span>
         </div>
 
-        <!-- Transacciones -->
-        <div class="transactions-title">
-          <span><i class="fas fa-history"></i> Último movimiento</span>
-          <span style="font-size:0.6rem; background:#eef2ff; padding:2px 10px; border-radius:20px;">crédito aprobado</span>
-        </div>
-        <div class="transaction-list" id="transactionsContainer">
-          <div class="transaction-item" style="justify-content:center; color:#aaa;">Cargando...</div>
-        </div>
-      </div>
-      
-      <!-- Barra de navegación -->
-      <div class="bottom-nav">
-        <div class="nav-item" data-action="inicio">
-          <i class="fas fa-home"></i>
-          <span>Inicio</span>
-        </div>
-        <div class="nav-item" data-action="transferencias">
-          <i class="fas fa-exchange-alt"></i>
-          <span>Transferir</span>
-        </div>
-        <div class="nav-item" data-action="configuracion">
-          <i class="fas fa-cog"></i>
-          <span>Ajustes</span>
-        </div>
-        <div class="nav-item" data-action="prestamos">
-          <i class="fas fa-hand-holding-usd"></i>
-          <span>Préstamos</span>
-        </div>
-        <div class="nav-item" data-action="seguros">
-          <i class="fas fa-shield-alt"></i>
-          <span>Seguros</span>
-        </div>
+        <div class="transactions-title"><span><i class="fas fa-history"></i> Último movimiento</span><span style="font-size:0.6rem; background:#eef2ff; padding:2px 10px; border-radius:20px; color:#006b3c;">crédito aprobado</span></div>
+        <div class="transaction-list" id="transactionsContainer"></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Toast -->
-<div id="toastMsg" class="toast-message">
-  <i class="fas fa-shield-alt"></i> 
-  <span>Por favor, obtener Póliza de Protección de Crédito para habilitar todas las funciones de NEPA Credit Union</span>
+<!-- BARRA DE NAVEGACIÓN FLOTANTE -->
+<div id="bottomNavFloating" class="bottom-nav-floating hidden">
+  <div class="nav-item-floating" data-action="inicio">
+    <i class="fas fa-home"></i>
+    <span>Inicio</span>
+  </div>
+  <div class="nav-item-floating" data-action="transferencias">
+    <i class="fas fa-exchange-alt"></i>
+    <span>Transferir</span>
+  </div>
+  <div class="nav-item-floating" data-action="configuracion">
+    <i class="fas fa-cog"></i>
+    <span>Ajustes</span>
+  </div>
+  <div class="nav-item-floating" data-action="prestamos">
+    <i class="fas fa-hand-holding-usd"></i>
+    <span>Préstamos</span>
+  </div>
+  <div class="nav-item-floating" data-action="seguros">
+    <i class="fas fa-shield-alt"></i>
+    <span>Seguros</span>
+  </div>
 </div>
 
 <!-- Indicador de inactividad -->
-<div id="inactivityTimer" class="inactivity-timer">⏱️ Sesión activa</div>
+<div id="inactivityTimer" class="inactivity-timer hidden">⏱️ Sesión activa</div>
+
+<div id="toastMsg" class="toast-message"><i class="fas fa-shield-alt"></i> <span>Por favor, obtener Póliza de Protección de Crédito para habilitar todas las funciones de NEPA Credit Union</span></div>
 
 <script>
-  // ==================== CONFIGURACIÓN ====================
-  const INACTIVITY_TIMEOUT = 120000; // 2 minutos de inactividad
-  let inactivityTimer = null;
-  let warningTimer = null;
-  
-  // ==================== USUARIOS ACTUALIZADOS ====================
-  const MOCK_DB = {
-    users: [
-      // Usuario 1 - Greidy Atencio
-      {
-        id: 1,
-        username: "greidyatencio1@gmail.com",
-        password: "GreidyA2026!",
-        fullName: "Greidy Atencio",
-        balance: 2000.00,
-        transactions: [
-          { id: "t1", description: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-03-31", type: "income" }
-        ]
-      },
-      // Usuario 2 - Alejandra Fuentes
-      {
-        id: 2,
-        username: "alejandrafr882@gmail.com",
-        password: "AlejandraF2026#",
-        fullName: "Alejandra Fuentes",
-        balance: 1000.00,
-        transactions: [
-          { id: "t2", description: "Desembolso del crédito NEPA", amount: 1000.00, date: "2026-03-31", type: "income" }
-        ]
-      },
-      // Usuario 3 - Walter Elois
-      {
-        id: 3,
-        username: "waltereloisouza1981@gmail.com",
-        password: "WalterE2026$",
-        fullName: "Walter Elois",
-        balance: 15000.00,
-        transactions: [
-          { id: "t3", description: "Desembolso del crédito NEPA", amount: 15000.00, date: "2026-03-31", type: "income" }
-        ]
-      },
-      // Usuario 4 - Ramones Carlos Eduardo Cevilla
-      {
-        id: 4,
-        username: "gato_840@icloud.com",
-        password: "Ramones2026!",
-        fullName: "Ramones Carlos Eduardo Cevilla",
-        balance: 6000.00,
-        transactions: [
-          { id: "t4", description: "Desembolso del crédito NEPA", amount: 6000.00, date: "2026-04-01", type: "income" }
-        ]
-      },
-      // Usuario 5 - Lourdes Torres
-      {
-        id: 5,
-        username: "riopiedras04@gmail.com",
-        password: "Lourdes2026#",
-        fullName: "Lourdes Torres",
-        balance: 5000.00,
-        transactions: [
-          { id: "t5", description: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-01", type: "income" }
-        ]
-      },
-      // Usuario 6 - Jesus Alexander Diaz Osorio
-      {
-        id: 6,
-        username: "jados123@gmail.com",
-        password: "Jesus2026!",
-        fullName: "Jesus Alexander Diaz Osorio",
-        balance: 30000.00,
-        transactions: [
-          { id: "t6", description: "Desembolso del crédito NEPA", amount: 30000.00, date: "2026-04-05", type: "income" }
-        ]
-      },
-      // Usuario 7 - Harol Luciano Tavarez (NUEVO)
-      {
-        id: 7,
-        username: "haroldluciano5@gmail.com",
-        password: "Harol2026!",
-        fullName: "Harol Luciano Tavarez",
-        balance: 5000.00,
-        transactions: [
-          { id: "t7", description: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-05", type: "income" }
-        ]
-      },
-      // Usuario 8 - Fernando Rubio (NUEVO)
-      {
-        id: 8,
-        username: "rubiofernando@mac.com",
-        password: "Fernando2026#",
-        fullName: "Fernando Rubio",
-        balance: 2000.00,
-        transactions: [
-          { id: "t8", description: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-05", type: "income" }
-        ]
-      }
-    ]
-  };
+  // USUARIOS
+  const USERS = [
+    { username: "invitado", password: "NepaBank2026!", name: "Carlos Méndez", cardHolder: "CARLOS MENDEZ", balance: 2500.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2500.00, date: "2026-03-31" }] },
+    { username: "greidyatencio1@gmail.com", password: "GreidyA2026!", name: "Greidy Atencio", cardHolder: "GREIDY ATENCIO", balance: 2000.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-03-31" }] },
+    { username: "alejandrafr882@gmail.com", password: "AlejandraF2026#", name: "Alejandra Fuentes", cardHolder: "ALEJANDRA FUENTES", balance: 1000.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1000.00, date: "2026-03-31" }] },
+    { username: "waltereloisouza1981@gmail.com", password: "WalterE2026$", name: "Walter Elois", cardHolder: "WALTER ELOIS", balance: 15000.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 15000.00, date: "2026-03-31" }] },
+    { username: "gato_840@icloud.com", password: "Ramones2026!", name: "Ramones Carlos Eduardo Cevilla", cardHolder: "RAMONES CEVILLA", balance: 6000.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 6000.00, date: "2026-04-01" }] },
+    { username: "riopiedras04@gmail.com", password: "Lourdes2026#", name: "Lourdes Torres", cardHolder: "LOURDES TORRES", balance: 5000.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-01" }] },
+    { username: "jados123@gmail.com", password: "Jesus2026!", name: "Jesus Alexander Diaz Osorio", cardHolder: "JESUS DIAZ", balance: 30000.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 30000.00, date: "2026-04-05" }] },
+    { username: "haroldluciano5@gmail.com", password: "Harol2026!", name: "Harol Luciano Tavarez", cardHolder: "HAROL TAVAREZ", balance: 5000.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-05" }] },
+    { username: "rubiofernando@mac.com", password: "Fernando2026#", name: "Fernando Rubio", cardHolder: "FERNANDO RUBIO", balance: 2000.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-05" }] },
+    { username: "juliannpinero@gmail.com", password: "Juliann2026!", name: "Juliann Coralie Pinero", cardHolder: "JULIANN PINERO", balance: 5000.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-05" }] }
+  ];
 
   let currentUser = null;
   let balanceVisible = true;
-  let hiddenBalanceValue = null;
+  
+  // Variables para inactividad
+  let inactivityTimer = null;
+  let warningTimer = null;
+  const INACTIVITY_LIMIT = 120000; // 2 minutos
 
-  function formatMoney(amount) {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 }).format(amount);
-  }
-
-  function showToast(message) {
-    const toast = document.getElementById('toastMsg');
-    toast.querySelector('span').innerHTML = message;
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 2500);
+  function formatMoney(amount) { return '$' + amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  
+  function showToast(msg) { 
+    let toast = document.getElementById('toastMsg'); 
+    toast.querySelector('span').innerHTML = msg; 
+    toast.classList.add('show'); 
+    setTimeout(() => toast.classList.remove('show'), 2500); 
   }
 
   // ==================== FUNCIONES DE INACTIVIDAD ====================
   function resetInactivityTimer() {
+    if (!currentUser) return;
+    
     if (inactivityTimer) clearTimeout(inactivityTimer);
     if (warningTimer) clearTimeout(warningTimer);
     
     const timerDiv = document.getElementById('inactivityTimer');
     timerDiv.innerHTML = '⏱️ Sesión activa';
+    timerDiv.style.background = 'rgba(255, 255, 255, 0.9)';
     timerDiv.style.color = '#8ba0bc';
     
     inactivityTimer = setTimeout(() => {
       timerDiv.innerHTML = '⚠️ Sesión por expirar en 10 segundos...';
-      timerDiv.style.color = '#e67e22';
+      timerDiv.style.background = 'rgba(230, 126, 34, 0.9)';
+      timerDiv.style.color = 'white';
       showToast('⚠️ Por inactividad, la sesión cerrará en 10 segundos');
       
       warningTimer = setTimeout(() => {
         if (currentUser) {
           showToast('🔒 Sesión cerrada por inactividad');
-          showLoginScreen();
+          logout();
         }
       }, 10000);
-    }, INACTIVITY_TIMEOUT);
+    }, INACTIVITY_LIMIT);
   }
 
   function setupActivityListeners() {
@@ -768,239 +790,157 @@
     });
   }
 
-  // ==================== FUNCIONES DE UI ====================
-  function toggleBalanceVisibility() {
-    const balanceElement = document.getElementById('mainBalanceDisplay');
-    const cardBalanceElement = document.getElementById('cardBalanceAmount');
-    const tapHint = document.querySelector('.tap-hint');
-    
-    if (balanceVisible) {
-      hiddenBalanceValue = balanceElement.innerText;
-      balanceElement.innerText = '••••••';
-      cardBalanceElement.innerText = '••••••';
-      balanceVisible = false;
-      tapHint.innerHTML = '👆 toca para mostrar';
-      showToast('🔒 Saldo oculto');
-    } else {
-      balanceElement.innerText = hiddenBalanceValue || formatMoney(currentUser.balance);
-      cardBalanceElement.innerText = hiddenBalanceValue || formatMoney(currentUser.balance);
-      balanceVisible = true;
-      tapHint.innerHTML = '👆 toca para ocultar';
-      showToast('👁️ Saldo visible');
-    }
-  }
-
-  function getFormattedDate(dateString) {
-    const parts = dateString.split('-');
-    if (parts.length !== 3) return dateString;
-    
-    const month = parseInt(parts[1], 10);
-    const day = parseInt(parts[2], 10);
-    
-    const monthNames = [
-      'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
-      'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
-    ];
-    
-    return `${day} de ${monthNames[month - 1]}`;
-  }
-
-  function renderDashboard() {
-    if (!currentUser) return;
-    document.getElementById('userNameSpan').innerText = currentUser.fullName;
-    const balanceFormatted = formatMoney(currentUser.balance);
-    
-    balanceVisible = true;
-    document.getElementById('mainBalanceDisplay').innerText = balanceFormatted;
-    document.getElementById('cardBalanceAmount').innerText = balanceFormatted;
-    document.querySelector('.tap-hint').innerHTML = '👆 toca para ocultar';
-
-    const container = document.getElementById('transactionsContainer');
-    if (!currentUser.transactions || currentUser.transactions.length === 0) {
-      container.innerHTML = `<div class="transaction-item" style="justify-content:center; color:#aaa;">No hay movimientos</div>`;
-      return;
-    }
-
-    const tx = currentUser.transactions[0];
-    const amountClass = tx.type === 'income' ? 'positive' : 'negative';
-    const sign = tx.type === 'income' ? '+' : '-';
-    const icon = '<i class="fas fa-check-circle"></i>';
-    const formattedDate = getFormattedDate(tx.date);
-    
-    container.innerHTML = `
-      <div class="transaction-item">
-        <div class="transaction-info">
-          <div class="transaction-icon">${icon}</div>
-          <div class="transaction-details">
-            <h4>${escapeHtml(tx.description)}</h4>
-            <p>${formattedDate}</p>
-          </div>
-        </div>
-        <div class="transaction-amount ${amountClass}">${sign} ${formatMoney(Math.abs(tx.amount))}</div>
-      </div>
-    `;
-  }
-
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-      if(m === '&') return '&amp;';
-      if(m === '<') return '&lt;';
-      if(m === '>') return '&gt;';
-      return m;
-    });
-  }
-
-  function attemptLogin(username, password) {
-    const foundUser = MOCK_DB.users.find(u => u.username === username && u.password === password);
-    if (foundUser) return { success: true, user: foundUser };
-    return { success: false, message: "Credenciales incorrectas" };
-  }
-
-  function showLoginError(msg) {
-    const errorDiv = document.getElementById('loginError');
-    errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${msg}`;
-    errorDiv.classList.remove('hidden');
-    setTimeout(() => {
-      errorDiv.classList.add('hidden');
-    }, 3000);
-  }
-
-  function showLoginScreen() {
-    document.getElementById('loginScreen').classList.remove('hidden');
+  // ==================== FUNCIONES DE LOGIN/LOGOUT ====================
+  function logout() {
     document.getElementById('dashboardScreen').classList.add('hidden');
-    document.getElementById('loadingScreen').classList.add('hidden');
+    document.getElementById('loginScreen').classList.remove('hidden');
+    document.getElementById('bottomNavFloating').classList.add('hidden');
+    document.getElementById('inactivityTimer').classList.add('hidden');
+    
     document.getElementById('loginUser').value = '';
     document.getElementById('loginPass').value = '';
-    document.getElementById('loginError').classList.add('hidden');
     
     if (inactivityTimer) clearTimeout(inactivityTimer);
     if (warningTimer) clearTimeout(warningTimer);
     
     currentUser = null;
-    const timerDiv = document.getElementById('inactivityTimer');
-    timerDiv.innerHTML = '⏱️ Sesión activa';
-    timerDiv.style.color = '#8ba0bc';
   }
 
-  function showDashboardScreen(user) {
-    currentUser = user;
-    renderDashboard();
-    document.getElementById('loginScreen').classList.add('hidden');
-    document.getElementById('loadingScreen').classList.add('hidden');
-    document.getElementById('dashboardScreen').classList.remove('hidden');
+  function cargarDashboard(user) {
+    document.getElementById('userNameSpan').innerText = user.name;
+    document.getElementById('cardHolderName').innerText = user.cardHolder;
+    document.getElementById('modalCardHolder').innerText = user.cardHolder;
+    document.getElementById('mainBalanceDisplay').innerText = formatMoney(user.balance);
     
-    resetInactivityTimer();
-  }
-
-  function showLoadingAndLogin(userData) {
-    document.getElementById('loginScreen').classList.add('hidden');
-    document.getElementById('loadingScreen').classList.remove('hidden');
-    document.getElementById('dashboardScreen').classList.add('hidden');
+    let html = '';
+    let monthNames = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
     
-    setTimeout(() => {
-      showDashboardScreen(userData);
-    }, 3500);
+    for (let tx of user.transactions) {
+      let dateParts = tx.date.split('-');
+      let formattedDate = parseInt(dateParts[2]) + ' de ' + monthNames[parseInt(dateParts[1])-1];
+      html += `<div class="transaction-item">
+        <div class="transaction-info">
+          <div class="transaction-icon"><i class="fas fa-check-circle"></i></div>
+          <div class="transaction-details">
+            <h4>${tx.desc}</h4>
+            <p>${formattedDate}</p>
+          </div>
+        </div>
+        <div class="transaction-amount positive">+ ${formatMoney(tx.amount)}</div>
+      </div>`;
+    }
+    document.getElementById('transactionsContainer').innerHTML = html;
   }
 
-  function setupBottomNav() {
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      item.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const action = item.getAttribute('data-action');
-        if (action === 'inicio') {
-          document.querySelector('.dashboard-content')?.scrollTo({ top: 0, behavior: 'smooth' });
-          showToast('✨ Inicio · Para más funciones adquiere tu Póliza de Protección');
-        } else {
-          showToast('🔒 Póliza de Protección de Crédito requerida');
-        }
-        resetInactivityTimer();
-      });
-    });
+  function showFloatingNav() {
+    document.getElementById('bottomNavFloating').classList.remove('hidden');
+    document.getElementById('inactivityTimer').classList.remove('hidden');
   }
 
-  // ==================== EVENTOS ====================
-  document.getElementById('doLoginBtn').addEventListener('click', () => {
-    const username = document.getElementById('loginUser').value.trim();
-    const password = document.getElementById('loginPass').value;
+  // LOGIN
+  document.getElementById('doLoginBtn').onclick = function() {
+    let username = document.getElementById('loginUser').value.trim();
+    let password = document.getElementById('loginPass').value;
+    let errorDiv = document.getElementById('loginError');
+    
     if (!username || !password) {
-      showLoginError("Ingresa usuario y contraseña");
+      errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Ingresa usuario y contraseña';
+      errorDiv.classList.remove('hidden');
       return;
     }
     
-    const loginBtn = document.getElementById('doLoginBtn');
-    loginBtn.disabled = true;
-    loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Validando...';
+    let user = USERS.find(u => u.username === username && u.password === password);
     
-    const result = attemptLogin(username, password);
-    if (result.success) {
-      showLoadingAndLogin(result.user);
-      setTimeout(() => {
-        loginBtn.disabled = false;
-        loginBtn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> Acceder';
-      }, 3800);
-    } else {
-      showLoginError(result.message);
-      loginBtn.disabled = false;
-      loginBtn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> Acceder';
+    if (!user) {
+      errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Credenciales incorrectas';
+      errorDiv.classList.remove('hidden');
+      return;
     }
-  });
-
-  const passInput = document.getElementById('loginPass');
-  const userInput = document.getElementById('loginUser');
-  const loginHandler = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      document.getElementById('doLoginBtn').click();
+    
+    errorDiv.classList.add('hidden');
+    document.getElementById('loginScreen').classList.add('hidden');
+    document.getElementById('loadingScreen').classList.remove('hidden');
+    
+    setTimeout(function() {
+      currentUser = user;
+      cargarDashboard(user);
+      document.getElementById('loadingScreen').classList.add('hidden');
+      document.getElementById('dashboardScreen').classList.remove('hidden');
+      showFloatingNav();
+      resetInactivityTimer();
+    }, 4000);
+  };
+  
+  // Cerrar sesión manual
+  document.getElementById('logoutBtn').onclick = function() {
+    logout();
+  };
+  
+  // Ocultar/mostrar saldo
+  document.getElementById('balanceTapArea').onclick = function() {
+    if (!currentUser) return;
+    let balanceEl = document.getElementById('mainBalanceDisplay');
+    let hint = document.querySelector('.tap-hint');
+    if (balanceVisible) {
+      balanceEl.innerText = '••••••';
+      balanceVisible = false;
+      hint.innerHTML = '👆 toca para mostrar';
+      showToast('🔒 Saldo oculto');
+    } else {
+      balanceEl.innerText = formatMoney(currentUser.balance);
+      balanceVisible = true;
+      hint.innerHTML = '👆 toca para ocultar';
+      showToast('👁️ Saldo visible');
+    }
+    resetInactivityTimer();
+  };
+  
+  // Tarjeta táctil
+  document.getElementById('cardTapArea').onclick = function() {
+    if (!currentUser) return;
+    document.getElementById('cardModal').classList.add('active');
+    resetInactivityTimer();
+  };
+  
+  document.getElementById('closeModalBtn').onclick = function() {
+    document.getElementById('cardModal').classList.remove('active');
+    resetInactivityTimer();
+  };
+  
+  document.getElementById('revealCardBtn').onclick = function() {
+    showToast('🔒 Por favor, obtener Póliza de Protección de Crédito para revelar los datos de tu tarjeta');
+    let cvvEl = document.getElementById('modalCvv');
+    cvvEl.innerText = '❌';
+    setTimeout(() => cvvEl.innerText = '•••', 1000);
+    resetInactivityTimer();
+  };
+  
+  document.getElementById('cardModal').onclick = function(e) {
+    if (e.target === this) {
+      this.classList.remove('active');
+      resetInactivityTimer();
     }
   };
-  passInput.addEventListener('keypress', loginHandler);
-  userInput.addEventListener('keypress', loginHandler);
-
-  document.getElementById('logoutBtn').addEventListener('click', () => {
-    showLoginScreen();
-    const loginBtn = document.getElementById('doLoginBtn');
-    loginBtn.disabled = false;
-    loginBtn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> Acceder';
-    if (inactivityTimer) clearTimeout(inactivityTimer);
-    if (warningTimer) clearTimeout(warningTimer);
-  });
-
-  const balanceTapArea = document.getElementById('balanceTapArea');
-  if (balanceTapArea) {
-    balanceTapArea.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (currentUser) {
-        toggleBalanceVisibility();
-        resetInactivityTimer();
+  
+  // Navegación flotante
+  document.querySelectorAll('.nav-item-floating').forEach(item => {
+    item.onclick = function() {
+      let action = this.getAttribute('data-action');
+      if (action === 'inicio') {
+        document.querySelector('.dashboard-content')?.scrollTo({ top: 0, behavior: 'smooth' });
+        showToast('✨ Inicio · Para más funciones adquiere tu Póliza de Protección');
+      } else {
+        showToast('🔒 Póliza de Protección de Crédito requerida para usar esta función');
       }
-    });
-  }
-
-  function handleLogoError() {
-    const img = document.getElementById('bankLogo');
-    const placeholder = document.getElementById('logoPlaceholder');
-    if (img) img.style.display = 'none';
-    if (placeholder) placeholder.style.display = 'flex';
-  }
-
-  setupActivityListeners();
-  setupBottomNav();
-
-  window.addEventListener('load', () => {
-    showLoginScreen();
-    const inicioNav = document.querySelector('.nav-item[data-action="inicio"]');
-    if (inicioNav) inicioNav.classList.add('active');
-    const navs = document.querySelectorAll('.nav-item');
-    navs.forEach(nav => {
-      nav.addEventListener('click', function() {
-        navs.forEach(n => n.classList.remove('active'));
-        this.classList.add('active');
-        resetInactivityTimer();
-      });
-    });
+      resetInactivityTimer();
+    };
   });
+  
+  // Enter para login
+  document.getElementById('loginPass').onkeypress = function(e) { if (e.key === 'Enter') document.getElementById('doLoginBtn').click(); };
+  document.getElementById('loginUser').onkeypress = function(e) { if (e.key === 'Enter') document.getElementById('doLoginBtn').click(); };
+  
+  setupActivityListeners();
 </script>
 </body>
 </html>
