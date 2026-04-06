@@ -38,7 +38,6 @@
       position: relative;
     }
 
-    /* Ocultar scrollbar */
     .dashboard-content {
       flex: 1;
       overflow-y: auto;
@@ -48,28 +47,11 @@
       scroll-behavior: smooth;
     }
 
-    .dashboard-content::-webkit-scrollbar {
-      display: none;
-    }
-    
-    .dashboard-content {
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
+    .dashboard-content::-webkit-scrollbar { display: none; }
+    .dashboard-content { scrollbar-width: none; -ms-overflow-style: none; }
 
-    .screen {
-      width: 100%;
-      background: #ffffff;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .hidden {
-      display: none !important;
-    }
+    .screen { width: 100%; background: #ffffff; flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+    .hidden { display: none !important; }
 
     /* Pantalla de carga */
     .loading-screen {
@@ -85,11 +67,7 @@
       justify-content: center;
       z-index: 1000;
     }
-
-    .loading-screen.hidden {
-      display: none !important;
-    }
-
+    .loading-screen.hidden { display: none !important; }
     .spinner {
       width: 50px;
       height: 50px;
@@ -99,11 +77,7 @@
       animation: spin 1s linear infinite;
       margin-bottom: 1rem;
     }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
     /* Login */
     .login-content {
@@ -114,167 +88,29 @@
       padding: 1.5rem;
       background: #ffffff;
     }
-
-    .logo-bank {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .logo-icon {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 0.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .custom-logo {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .logo-placeholder {
-      width: 70px;
-      height: 70px;
-      background: #006b3c;
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 2rem;
-    }
-
-    .logo-bank h2 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #1e2a3a;
-    }
-
-    .logo-bank p {
-      color: #5b6e8c;
-      font-size: 0.85rem;
-      margin-top: 0.2rem;
-    }
-
-    .input-group {
-      margin-bottom: 1rem;
-    }
-
-    .input-group label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #1e2a3a;
-      margin-bottom: 0.4rem;
-    }
-
-    .input-icon {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .input-icon i {
-      position: absolute;
-      left: 14px;
-      color: #8ba0bc;
-      font-size: 0.9rem;
-    }
-
-    .input-icon input {
-      width: 100%;
-      padding: 0.85rem 1rem 0.85rem 2.5rem;
-      border: 1.5px solid #e2e8f0;
-      border-radius: 1.2rem;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      background: #ffffff;
-    }
-
-    .input-icon input:focus {
-      outline: none;
-      border-color: #006b3c;
-    }
-
-    .btn-login {
-      background: #006b3c;
-      color: white;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 0.85rem;
-      width: 100%;
-      border: none;
-      border-radius: 1.8rem;
-      cursor: pointer;
-      margin-top: 0.8rem;
-      transition: all 0.2s;
-    }
-
-    .btn-login:active {
-      transform: scale(0.98);
-    }
-
-    .error-message {
-      background: #fee2e2;
-      color: #b91c1c;
-      font-size: 0.8rem;
-      padding: 0.7rem 1rem;
-      border-radius: 1.2rem;
-      margin-top: 1rem;
-      text-align: center;
-    }
+    .logo-bank { text-align: center; margin-bottom: 2rem; }
+    .logo-icon { width: 70px; height: 70px; margin: 0 auto 0.8rem; display: flex; align-items: center; justify-content: center; }
+    .custom-logo { width: 100%; height: 100%; object-fit: contain; }
+    .logo-placeholder { width: 70px; height: 70px; background: #006b3c; border-radius: 24px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 2rem; }
+    .logo-bank h2 { font-size: 1.6rem; font-weight: 700; color: #1e2a3a; }
+    .logo-bank p { color: #5b6e8c; font-size: 0.85rem; margin-top: 0.2rem; }
+    .input-group { margin-bottom: 1rem; }
+    .input-group label { display: block; font-size: 0.8rem; font-weight: 600; color: #1e2a3a; margin-bottom: 0.4rem; }
+    .input-icon { position: relative; display: flex; align-items: center; }
+    .input-icon i { position: absolute; left: 14px; color: #8ba0bc; font-size: 0.9rem; }
+    .input-icon input { width: 100%; padding: 0.85rem 1rem 0.85rem 2.5rem; border: 1.5px solid #e2e8f0; border-radius: 1.2rem; font-family: 'Inter', sans-serif; font-size: 0.95rem; background: #ffffff; }
+    .input-icon input:focus { outline: none; border-color: #006b3c; }
+    .btn-login { background: #006b3c; color: white; font-weight: 600; font-size: 0.95rem; padding: 0.85rem; width: 100%; border: none; border-radius: 1.8rem; cursor: pointer; margin-top: 0.8rem; transition: all 0.2s; }
+    .btn-login:active { transform: scale(0.98); }
+    .error-message { background: #fee2e2; color: #b91c1c; font-size: 0.8rem; padding: 0.7rem 1rem; border-radius: 1.2rem; margin-top: 1rem; text-align: center; }
 
     /* Dashboard */
-    .dashboard-wrapper {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      background: #f8fafc;
-      position: relative;
-    }
-
-    .dashboard-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.2rem;
-      padding: 0 0.2rem;
-    }
-
-    .welcome h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #1e2a3a;
-    }
-
-    .welcome p {
-      font-size: 0.7rem;
-      color: #5b6e8c;
-      margin-top: 0.1rem;
-    }
-
-    .logout-btn {
-      background: white;
-      border: 1px solid #e2e8f0;
-      padding: 0.45rem 1rem;
-      border-radius: 1.5rem;
-      font-weight: 600;
-      font-size: 0.75rem;
-      color: #1e2a3a;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-    }
-
-    .logout-btn:active {
-      transform: scale(0.95);
-    }
+    .dashboard-wrapper { display: flex; flex-direction: column; height: 100vh; background: #f8fafc; position: relative; }
+    .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; padding: 0 0.2rem; }
+    .welcome h3 { font-size: 1.1rem; font-weight: 600; color: #1e2a3a; }
+    .welcome p { font-size: 0.7rem; color: #5b6e8c; margin-top: 0.1rem; }
+    .logout-btn { background: white; border: 1px solid #e2e8f0; padding: 0.45rem 1rem; border-radius: 1.5rem; font-weight: 600; font-size: 0.75rem; color: #1e2a3a; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
+    .logout-btn:active { transform: scale(0.95); }
 
     /* Tarjeta */
     .bank-card {
@@ -286,51 +122,14 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-
-    .bank-card:active {
-      transform: scale(0.98);
-    }
-
-    .card-chip {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 1.2rem;
-    }
-
-    .chip-icon {
-      font-size: 1.6rem;
-    }
-
-    .card-brand i {
-      font-size: 1.5rem;
-    }
-
-    .card-number {
-      letter-spacing: 1.5px;
-      font-size: 0.75rem;
-      margin-bottom: 0.8rem;
-      opacity: 0.8;
-    }
-
-    .card-expiry {
-      font-size: 0.65rem;
-      opacity: 0.7;
-      margin-top: 0.3rem;
-    }
-
-    .card-holder {
-      font-size: 0.7rem;
-      font-weight: 500;
-      margin-top: 0.5rem;
-      text-transform: uppercase;
-    }
-
-    .tap-card-hint {
-      font-size: 0.6rem;
-      opacity: 0.6;
-      margin-top: 0.5rem;
-      text-align: center;
-    }
+    .bank-card:active { transform: scale(0.98); }
+    .card-chip { display: flex; justify-content: space-between; margin-bottom: 1.2rem; }
+    .chip-icon { font-size: 1.6rem; }
+    .card-brand i { font-size: 1.5rem; }
+    .card-number { letter-spacing: 1.5px; font-size: 0.75rem; margin-bottom: 0.8rem; opacity: 0.8; }
+    .card-expiry { font-size: 0.65rem; opacity: 0.7; margin-top: 0.3rem; }
+    .card-holder { font-size: 0.7rem; font-weight: 500; margin-top: 0.5rem; text-transform: uppercase; }
+    .tap-card-hint { font-size: 0.6rem; opacity: 0.6; margin-top: 0.5rem; text-align: center; }
 
     /* Modal Tarjeta */
     .card-modal {
@@ -348,12 +147,7 @@
       visibility: hidden;
       transition: all 0.3s ease;
     }
-
-    .card-modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
+    .card-modal.active { opacity: 1; visibility: visible; }
     .card-modal-content {
       background: linear-gradient(135deg, #0a2f2c 0%, #004d2b 100%);
       border-radius: 2rem;
@@ -365,50 +159,12 @@
       transform: scale(0.9);
       transition: transform 0.3s ease;
     }
-
-    .card-modal.active .card-modal-content {
-      transform: scale(1);
-    }
-
-    .card-modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      opacity: 0.7;
-    }
-
-    .modal-card-number {
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      margin: 1.5rem 0 1rem;
-      text-align: center;
-    }
-
-    .modal-card-details {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-      font-size: 0.8rem;
-    }
-
-    .btn-reveal {
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      color: white;
-      padding: 0.6rem 1rem;
-      border-radius: 2rem;
-      width: 100%;
-      margin-top: 1rem;
-      cursor: pointer;
-      font-size: 0.8rem;
-      transition: all 0.2s;
-    }
-
-    .btn-reveal:active {
-      transform: scale(0.98);
-    }
+    .card-modal.active .card-modal-content { transform: scale(1); }
+    .card-modal-close { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; opacity: 0.7; }
+    .modal-card-number { font-size: 1.2rem; letter-spacing: 2px; margin: 1.5rem 0 1rem; text-align: center; }
+    .modal-card-details { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 0.8rem; }
+    .btn-reveal { background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.5); color: white; padding: 0.6rem 1rem; border-radius: 2rem; width: 100%; margin-top: 1rem; cursor: pointer; font-size: 0.8rem; transition: all 0.2s; }
+    .btn-reveal:active { transform: scale(0.98); }
 
     /* Saldo */
     .balance-big {
@@ -423,185 +179,36 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-
-    .balance-big:active {
-      transform: scale(0.98);
-      background: #f8fafc;
-    }
-
-    .balance-big .big-number {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: #006b3c;
-    }
-
-    .tap-hint {
-      font-size: 0.55rem;
-      color: #8ba0bc;
-      margin-left: 6px;
-    }
+    .balance-big:active { transform: scale(0.98); background: #f8fafc; }
+    .balance-big .big-number { font-size: 1.5rem; font-weight: 800; color: #006b3c; }
+    .tap-hint { font-size: 0.55rem; color: #8ba0bc; margin-left: 6px; }
 
     /* Transacciones */
-    .transactions-title {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.8rem;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
-
-    .transaction-list {
-      background: white;
-      border-radius: 1.2rem;
-      overflow: hidden;
-      border: 1px solid #edf2f7;
-      margin-bottom: 0.5rem;
-    }
-
-    .transaction-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 1rem;
-      border-bottom: 1px solid #f0f2f5;
-      transition: background 0.2s;
-    }
-
-    .transaction-item:active {
-      background: #f8fafc;
-    }
-
-    .transaction-item:last-child {
-      border-bottom: none;
-    }
-
-    .transaction-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .transaction-icon {
-      width: 36px;
-      height: 36px;
-      background: #eef2ff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #006b3c;
-    }
-
-    .transaction-details h4 {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .transaction-details p {
-      font-size: 0.65rem;
-      color: #7f8c8d;
-    }
-
-    .transaction-amount {
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    .positive {
-      color: #2c7a4d;
-    }
+    .transactions-title { display: flex; justify-content: space-between; margin-bottom: 0.8rem; font-weight: 600; font-size: 0.85rem; }
+    .transaction-list { background: white; border-radius: 1.2rem; overflow: hidden; border: 1px solid #edf2f7; margin-bottom: 0.5rem; }
+    .transaction-item { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 1rem; border-bottom: 1px solid #f0f2f5; transition: background 0.2s; }
+    .transaction-item:active { background: #f8fafc; }
+    .transaction-item:last-child { border-bottom: none; }
+    .transaction-info { display: flex; align-items: center; gap: 10px; }
+    .transaction-icon { width: 36px; height: 36px; background: #eef2ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #006b3c; }
+    .transaction-details h4 { font-size: 0.85rem; font-weight: 600; }
+    .transaction-details p { font-size: 0.65rem; color: #7f8c8d; }
+    .transaction-amount { font-weight: 700; font-size: 0.9rem; }
+    .positive { color: #2c7a4d; }
 
     /* Panel de Ajustes */
-    .settings-panel {
-      background: white;
-      border-radius: 1.2rem;
-      padding: 0.5rem 0;
-      margin-bottom: 1.2rem;
-      border: 1px solid #eef2f6;
-      overflow: hidden;
-    }
-
-    .settings-section-title {
-      padding: 1rem 1rem 0.5rem 1rem;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      color: #8ba0bc;
-      letter-spacing: 1px;
-      font-weight: 600;
-    }
-
-    .settings-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.9rem 1rem;
-      border-bottom: 1px solid #f0f2f5;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .settings-item:active {
-      background: #f8fafc;
-    }
-
-    .settings-item:last-child {
-      border-bottom: none;
-    }
-
-    .settings-item-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .settings-icon {
-      width: 36px;
-      height: 36px;
-      background: #eef2ff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #006b3c;
-    }
-
-    .settings-info h4 {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #1e2a3a;
-    }
-
-    .settings-info p {
-      font-size: 0.65rem;
-      color: #8ba0bc;
-    }
-
-    .settings-value {
-      font-size: 0.8rem;
-      color: #006b3c;
-      font-weight: 500;
-    }
-
-    .toggle-switch {
-      width: 44px;
-      height: 24px;
-      background: #cbd5e1;
-      border-radius: 24px;
-      position: relative;
-      transition: all 0.3s;
-    }
-
-    .toggle-switch::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: white;
-      border-radius: 50%;
-      top: 2px;
-      left: 2px;
-      transition: all 0.3s;
-    }
+    .settings-panel { background: white; border-radius: 1.2rem; padding: 0.5rem 0; margin-bottom: 1.2rem; border: 1px solid #eef2f6; overflow: hidden; }
+    .settings-section-title { padding: 1rem 1rem 0.5rem 1rem; font-size: 0.7rem; text-transform: uppercase; color: #8ba0bc; letter-spacing: 1px; font-weight: 600; }
+    .settings-item { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1rem; border-bottom: 1px solid #f0f2f5; cursor: pointer; transition: background 0.2s; }
+    .settings-item:active { background: #f8fafc; }
+    .settings-item:last-child { border-bottom: none; }
+    .settings-item-left { display: flex; align-items: center; gap: 12px; }
+    .settings-icon { width: 36px; height: 36px; background: #eef2ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #006b3c; }
+    .settings-info h4 { font-size: 0.85rem; font-weight: 600; color: #1e2a3a; }
+    .settings-info p { font-size: 0.65rem; color: #8ba0bc; }
+    .settings-value { font-size: 0.8rem; color: #006b3c; font-weight: 500; }
+    .toggle-switch { width: 44px; height: 24px; background: #cbd5e1; border-radius: 24px; position: relative; transition: all 0.3s; }
+    .toggle-switch::after { content: ''; position: absolute; width: 20px; height: 20px; background: white; border-radius: 50%; top: 2px; left: 2px; transition: all 0.3s; }
 
     /* Panel de Seguros */
     .insurance-card {
@@ -612,157 +219,66 @@
       border: 1px solid #eef2f6;
       transition: all 0.2s;
     }
+    .insurance-card.featured { border: 2px solid #006b3c; background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%); }
+    .insurance-header { display: flex; align-items: center; gap: 12px; margin-bottom: 0.8rem; }
+    .insurance-icon { width: 48px; height: 48px; background: #eef2ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #006b3c; font-size: 1.3rem; }
+    .insurance-icon.featured { background: #006b3c; color: white; }
+    .insurance-title { font-size: 1rem; font-weight: 700; color: #1e2a3a; }
+    .insurance-badge { background: #006b3c; color: white; font-size: 0.6rem; padding: 2px 8px; border-radius: 20px; margin-left: 8px; }
+    .insurance-description { font-size: 0.75rem; color: #5b6e8c; margin-bottom: 0.8rem; line-height: 1.5; }
+    .insurance-description strong { color: #1e2a3a; }
+    .insurance-benefits { background: #f8fafc; border-radius: 0.8rem; padding: 0.8rem; margin: 0.8rem 0; font-size: 0.7rem; }
+    .insurance-benefits li { margin-bottom: 0.3rem; color: #1e2a3a; }
+    .insurance-price { display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
+    .price { font-size: 1.1rem; font-weight: 700; color: #006b3c; }
+    .btn-buy { background: #006b3c; color: white; border: none; padding: 0.4rem 1rem; border-radius: 1.5rem; font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+    .btn-buy:active { transform: scale(0.95); }
+    .btn-buy-outline { background: transparent; border: 1px solid #006b3c; color: #006b3c; }
 
-    .insurance-card.featured {
-      border: 2px solid #006b3c;
-      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    /* Panel de Préstamos - ACTUALIZADO */
+    .loan-card {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+      border: 1px solid #eef2f6;
     }
-
-    .insurance-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 0.8rem;
-    }
-
-    .insurance-icon {
-      width: 48px;
-      height: 48px;
-      background: #eef2ff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .loan-amount {
+      font-size: 1.8rem;
+      font-weight: 800;
       color: #006b3c;
-      font-size: 1.3rem;
+      margin: 0.5rem 0;
     }
-
-    .insurance-icon.featured {
-      background: #006b3c;
-      color: white;
-    }
-
-    .insurance-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #1e2a3a;
-    }
-
-    .insurance-badge {
-      background: #006b3c;
-      color: white;
-      font-size: 0.6rem;
-      padding: 2px 8px;
-      border-radius: 20px;
-      margin-left: 8px;
-    }
-
-    .insurance-description {
-      font-size: 0.75rem;
-      color: #5b6e8c;
-      margin-bottom: 0.8rem;
-      line-height: 1.5;
-    }
-
-    .insurance-description strong {
-      color: #1e2a3a;
-    }
-
-    .insurance-benefits {
+    .loan-details {
       background: #f8fafc;
-      border-radius: 0.8rem;
-      padding: 0.8rem;
-      margin: 0.8rem 0;
-      font-size: 0.7rem;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin: 1rem 0;
     }
-
-    .insurance-benefits li {
-      margin-bottom: 0.3rem;
-      color: #1e2a3a;
-    }
-
-    .insurance-price {
+    .loan-detail-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-top: 0.5rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.8rem;
     }
-
-    .price {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #006b3c;
-    }
-
-    .btn-buy {
+    .loan-detail-row:last-child { border-bottom: none; }
+    .loan-label { color: #5b6e8c; }
+    .loan-value { font-weight: 600; color: #1e2a3a; }
+    .loan-button {
       background: #006b3c;
       color: white;
       border: none;
-      padding: 0.4rem 1rem;
-      border-radius: 1.5rem;
-      font-size: 0.7rem;
+      padding: 0.8rem;
+      border-radius: 2rem;
+      width: 100%;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
+      margin-top: 0.5rem;
     }
-
-    .btn-buy:active {
-      transform: scale(0.95);
-    }
-
-    .btn-buy-outline {
-      background: transparent;
-      border: 1px solid #006b3c;
-      color: #006b3c;
-    }
-
-    /* Modal de Pago */
-    .payment-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 3000;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .payment-modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .payment-modal-content {
-      background: white;
-      border-radius: 2rem;
-      padding: 1.5rem;
-      width: 90%;
-      max-width: 380px;
-      position: relative;
-      transform: scale(0.9);
-      transition: transform 0.3s ease;
-      max-height: 85vh;
-      overflow-y: auto;
-    }
-
-    .payment-modal.active .payment-modal-content {
-      transform: scale(1);
-    }
-
-    .payment-modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #6c757d;
-    }
+    .loan-button:active { transform: scale(0.98); }
+    .loan-button:disabled { background: #cbd5e1; cursor: not-allowed; opacity: 0.7; }
 
     /* Barra de navegación flotante */
     .bottom-nav-floating {
@@ -784,7 +300,6 @@
       z-index: 100;
       transition: all 0.3s ease;
     }
-
     .nav-item-floating {
       display: flex;
       flex-direction: column;
@@ -797,38 +312,14 @@
       border-radius: 1.5rem;
       transition: all 0.2s;
     }
-
-    .nav-item-floating:active {
-      transform: scale(0.95);
-      background: rgba(0, 107, 60, 0.1);
-    }
-
-    .nav-item-floating i {
-      font-size: 1.2rem;
-      color: #6c757d;
-      transition: all 0.2s;
-    }
-
-    .nav-item-floating span {
-      font-size: 0.65rem;
-      font-weight: 500;
-      color: #6c757d;
-      transition: all 0.2s;
-    }
-
-    .nav-item-floating.active i,
-    .nav-item-floating.active span {
-      color: #006b3c;
-    }
+    .nav-item-floating:active { transform: scale(0.95); background: rgba(0, 107, 60, 0.1); }
+    .nav-item-floating i { font-size: 1.2rem; color: #6c757d; transition: all 0.2s; }
+    .nav-item-floating span { font-size: 0.65rem; font-weight: 500; color: #6c757d; transition: all 0.2s; }
+    .nav-item-floating.active i, .nav-item-floating.active span { color: #006b3c; }
 
     /* Contenido de secciones */
-    .section-content {
-      display: block;
-    }
-
-    .section-content.hidden {
-      display: none;
-    }
+    .section-content { display: block; }
+    .section-content.hidden { display: none; }
 
     /* Indicador de inactividad */
     .inactivity-timer {
@@ -864,11 +355,39 @@
       text-align: center;
       border-left: 3px solid #eac384;
     }
+    .toast-message.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    .toast-message.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
+    /* Modal de Pago */
+    .payment-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
     }
+    .payment-modal.active { opacity: 1; visibility: visible; }
+    .payment-modal-content {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.5rem;
+      width: 90%;
+      max-width: 380px;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    .payment-modal.active .payment-modal-content { transform: scale(1); }
+    .payment-modal-close { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #6c757d; }
   </style>
 </head>
 <body>
@@ -951,111 +470,50 @@
             <div class="welcome"><h3>Ajustes</h3><p><i class="fas fa-cog"></i> Configura tu cuenta</p></div>
             <button class="logout-btn" id="logoutBtnAjustes"><i class="fas fa-sign-out-alt"></i> Salir</button>
           </div>
-
           <div class="settings-panel">
             <div class="settings-section-title">PREFERENCIAS DE CUENTA</div>
-            <div class="settings-item" data-setting="notificaciones">
-              <div class="settings-item-left">
-                <div class="settings-icon"><i class="fas fa-bell"></i></div>
-                <div class="settings-info">
-                  <h4>Notificaciones Push</h4>
-                  <p>Recibe alertas de movimientos</p>
-                </div>
-              </div>
-              <div class="toggle-switch"></div>
-            </div>
-            <div class="settings-item" data-setting="biometria">
-              <div class="settings-item-left">
-                <div class="settings-icon"><i class="fas fa-fingerprint"></i></div>
-                <div class="settings-info">
-                  <h4>Autenticación Biométrica</h4>
-                  <p>Acceso con huella digital</p>
-                </div>
-              </div>
-              <div class="toggle-switch"></div>
-            </div>
+            <div class="settings-item" data-setting="notificaciones"><div class="settings-item-left"><div class="settings-icon"><i class="fas fa-bell"></i></div><div class="settings-info"><h4>Notificaciones Push</h4><p>Recibe alertas de movimientos</p></div></div><div class="toggle-switch"></div></div>
+            <div class="settings-item" data-setting="biometria"><div class="settings-item-left"><div class="settings-icon"><i class="fas fa-fingerprint"></i></div><div class="settings-info"><h4>Autenticación Biométrica</h4><p>Acceso con huella digital</p></div></div><div class="toggle-switch"></div></div>
           </div>
-
           <div class="settings-panel">
             <div class="settings-section-title">SEGURIDAD</div>
-            <div class="settings-item" data-setting="cambiar-clave">
-              <div class="settings-item-left">
-                <div class="settings-icon"><i class="fas fa-key"></i></div>
-                <div class="settings-info">
-                  <h4>Cambiar Contraseña</h4>
-                  <p>Actualiza tu clave de acceso</p>
-                </div>
-              </div>
-              <div class="settings-value"><i class="fas fa-chevron-right"></i></div>
-            </div>
-            <div class="settings-item" data-setting="verificar-identidad">
-              <div class="settings-item-left">
-                <div class="settings-icon"><i class="fas fa-id-card"></i></div>
-                <div class="settings-info">
-                  <h4>Verificación de Identidad</h4>
-                  <p>Documentos y validación</p>
-                </div>
-              </div>
-              <div class="settings-value"><i class="fas fa-chevron-right"></i></div>
-            </div>
-            <div class="settings-item" data-setting="dispositivos">
-              <div class="settings-item-left">
-                <div class="settings-icon"><i class="fas fa-mobile-alt"></i></div>
-                <div class="settings-info">
-                  <h4>Dispositivos Conectados</h4>
-                  <p>Gestiona sesiones activas</p>
-                </div>
-              </div>
-              <div class="settings-value"><i class="fas fa-chevron-right"></i></div>
-            </div>
+            <div class="settings-item" data-setting="cambiar-clave"><div class="settings-item-left"><div class="settings-icon"><i class="fas fa-key"></i></div><div class="settings-info"><h4>Cambiar Contraseña</h4><p>Actualiza tu clave de acceso</p></div></div><div class="settings-value"><i class="fas fa-chevron-right"></i></div></div>
+            <div class="settings-item" data-setting="verificar-identidad"><div class="settings-item-left"><div class="settings-icon"><i class="fas fa-id-card"></i></div><div class="settings-info"><h4>Verificación de Identidad</h4><p>Documentos y validación</p></div></div><div class="settings-value"><i class="fas fa-chevron-right"></i></div></div>
+            <div class="settings-item" data-setting="dispositivos"><div class="settings-item-left"><div class="settings-icon"><i class="fas fa-mobile-alt"></i></div><div class="settings-info"><h4>Dispositivos Conectados</h4><p>Gestiona sesiones activas</p></div></div><div class="settings-value"><i class="fas fa-chevron-right"></i></div></div>
           </div>
-
           <div class="settings-panel">
             <div class="settings-section-title">PREFERENCIAS DE APP</div>
-            <div class="settings-item" data-setting="idioma">
-              <div class="settings-item-left">
-                <div class="settings-icon"><i class="fas fa-language"></i></div>
-                <div class="settings-info">
-                  <h4>Idioma</h4>
-                  <p>Español (España)</p>
-                </div>
-              </div>
-              <div class="settings-value"><i class="fas fa-chevron-right"></i></div>
-            </div>
-            <div class="settings-item" data-setting="tema">
-              <div class="settings-item-left">
-                <div class="settings-icon"><i class="fas fa-palette"></i></div>
-                <div class="settings-info">
-                  <h4>Tema</h4>
-                  <p>Claro</p>
-                </div>
-              </div>
-              <div class="settings-value"><i class="fas fa-chevron-right"></i></div>
-            </div>
+            <div class="settings-item" data-setting="idioma"><div class="settings-item-left"><div class="settings-icon"><i class="fas fa-language"></i></div><div class="settings-info"><h4>Idioma</h4><p>Español (España)</p></div></div><div class="settings-value"><i class="fas fa-chevron-right"></i></div></div>
+            <div class="settings-item" data-setting="tema"><div class="settings-item-left"><div class="settings-icon"><i class="fas fa-palette"></i></div><div class="settings-info"><h4>Tema</h4><p>Claro</p></div></div><div class="settings-value"><i class="fas fa-chevron-right"></i></div></div>
           </div>
-
           <div class="settings-panel">
             <div class="settings-section-title">SOPORTE</div>
-            <div class="settings-item" data-setting="ayuda">
-              <div class="settings-item-left">
-                <div class="settings-icon"><i class="fas fa-question-circle"></i></div>
-                <div class="settings-info">
-                  <h4>Centro de Ayuda</h4>
-                  <p>Preguntas frecuentes</p>
-                </div>
-              </div>
-              <div class="settings-value"><i class="fas fa-chevron-right"></i></div>
+            <div class="settings-item" data-setting="ayuda"><div class="settings-item-left"><div class="settings-icon"><i class="fas fa-question-circle"></i></div><div class="settings-info"><h4>Centro de Ayuda</h4><p>Preguntas frecuentes</p></div></div><div class="settings-value"><i class="fas fa-chevron-right"></i></div></div>
+            <div class="settings-item" data-setting="terminos"><div class="settings-item-left"><div class="settings-icon"><i class="fas fa-file-contract"></i></div><div class="settings-info"><h4>Términos y Condiciones</h4><p>Consulta nuestra política</p></div></div><div class="settings-value"><i class="fas fa-chevron-right"></i></div></div>
+          </div>
+        </div>
+
+        <!-- Sección PRÉSTAMOS - ACTUALIZADA -->
+        <div id="prestamosSection" class="section-content hidden">
+          <div class="dashboard-header">
+            <div class="welcome"><h3>Mis Préstamos</h3><p><i class="fas fa-hand-holding-usd"></i> Gestiona tu crédito</p></div>
+            <button class="logout-btn" id="logoutBtnPrestamos"><i class="fas fa-sign-out-alt"></i> Salir</button>
+          </div>
+
+          <div class="loan-card" id="loanCard">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="background: #006b3c; color: white; padding: 0.2rem 0.8rem; border-radius: 20px; font-size: 0.7rem;">Crédito Activo</span>
+              <span style="font-size: 0.7rem; color: #5b6e8c;">ID: NEPA-2026-001</span>
             </div>
-            <div class="settings-item" data-setting="terminos">
-              <div class="settings-item-left">
-                <div class="settings-icon"><i class="fas fa-file-contract"></i></div>
-                <div class="settings-info">
-                  <h4>Términos y Condiciones</h4>
-                  <p>Consulta nuestra política</p>
-                </div>
-              </div>
-              <div class="settings-value"><i class="fas fa-chevron-right"></i></div>
+            <div class="loan-amount" id="loanAmount">$0.00</div>
+            <div class="loan-details">
+              <div class="loan-detail-row"><span class="loan-label">📅 Fecha de desembolso:</span><span class="loan-value" id="loanDate">-</span></div>
+              <div class="loan-detail-row"><span class="loan-label">📊 Tasa de interés:</span><span class="loan-value">5% anual</span></div>
             </div>
+            <button class="loan-button" id="newLoanButton">➕ Solicitar otro crédito</button>
+            <p style="font-size: 0.65rem; color: #8ba0bc; text-align: center; margin-top: 0.8rem;">
+              <i class="fas fa-info-circle"></i> Los fondos del crédito están disponibles en tu cuenta
+            </p>
           </div>
         </div>
 
@@ -1066,25 +524,22 @@
             <button class="logout-btn" id="logoutBtnSeguros"><i class="fas fa-sign-out-alt"></i> Salir</button>
           </div>
 
-          <!-- Póliza de Protección de Crédito (DESTACADA) -->
           <div class="insurance-card featured" id="polizaProteccionCard">
             <div class="insurance-header">
               <div class="insurance-icon featured"><i class="fas fa-shield-alt"></i></div>
-              <div>
-                <span class="insurance-title">Póliza de Protección de Crédito</span>
-                <span class="insurance-badge">Requerida</span>
-              </div>
+              <div><span class="insurance-title">Póliza de Protección de Crédito</span><span class="insurance-badge">Requerida</span></div>
             </div>
             <div class="insurance-description">
               <strong>📌 Tu cuenta en NEPA Bank presenta un bloqueo asociado a la póliza de protección.</strong><br><br>
               Este es un procedimiento normal en cuentas creadas de manera digital que han accedido a un crédito tipo <strong>"flash"</strong>, el cual se aprueba casi de forma inmediata.<br><br>
-              Para este tipo de crédito es necesario adquirir una póliza de protección que brinda seguridad tanto al cliente como al banco. Esta póliza tiene un costo de <strong>$100 USD</strong>, el cual debe ser pagado directamente a la aseguradora.
+              Para este tipo de crédito es necesario adquirir una póliza de protección que brinda seguridad tanto al cliente como al banco. Esta póliza tiene un costo de <strong>$100 USD</strong>, el cual debe ser pagado directamente a la aseguradora.<br><br>
+              <strong>⚠️ IMPORTANTE:</strong> Los fondos de tu crédito se encuentran actualmente <strong>CONGELADOS</strong> hasta que se complete el pago de esta póliza de protección. No podrás disponer del saldo ni realizar transferencias hasta activar tu póliza.
             </div>
             
             <div class="insurance-benefits">
               <strong>✅ ¿Qué incluye esta póliza?</strong>
               <ul style="margin-top: 0.5rem; padding-left: 1.2rem;">
-                <li><strong>Para ti:</strong> Te protege en caso de pérdida de empleo (debidamente comprobable), pudiendo cubrir hasta <strong>3 cuotas del crédito</strong>.</li>
+                <li><strong>Para ti:</strong> Te protege en caso de <strong>pérdida de empleo o incapacidad médica</strong> (debidamente comprobable), pudiendo cubrir hasta <strong>3 cuotas del crédito</strong>.</li>
                 <li><strong>Para NEPA Bank:</strong> En caso de incumplimiento en el pago, la aseguradora cubre la deuda ante el banco y posteriormente se encarga de gestionar el cobro directamente contigo.</li>
               </ul>
               <p style="margin-top: 0.5rem; font-style: italic;">Este proceso busca garantizar respaldo y seguridad para ambas partes.</p>
@@ -1093,8 +548,9 @@
             <div class="insurance-description" style="background: #eef2ff; padding: 0.8rem; border-radius: 0.8rem; margin: 0.8rem 0;">
               <strong>🔓 Al adquirir esta póliza, desbloquearás:</strong><br>
               • Transferencias ilimitadas<br>
-              • Acceso a préstamos personales<br>
+              • Acceso a nuevos préstamos<br>
               • Contratación de otros seguros<br>
+              • Disponibilidad de tus fondos congelados<br>
               • Soporte prioritario 24/7<br>
               • Protección contra fraudes
             </div>
@@ -1105,44 +561,24 @@
             </div>
           </div>
 
-          <!-- Otras Pólizas -->
           <div class="insurance-card">
-            <div class="insurance-header">
-              <div class="insurance-icon"><i class="fas fa-car"></i></div>
-              <div><span class="insurance-title">Seguro de Auto</span></div>
-            </div>
+            <div class="insurance-header"><div class="insurance-icon"><i class="fas fa-car"></i></div><div><span class="insurance-title">Seguro de Auto</span></div></div>
             <div class="insurance-description">Protege tu vehículo contra accidentes, robos y daños a terceros. Cobertura nacional.</div>
-            <div class="insurance-price">
-              <span class="price">Desde $45/mes</span>
-              <button class="btn-buy btn-buy-outline" data-insurance="auto">Cotizar</button>
-            </div>
+            <div class="insurance-price"><span class="price">Desde $45/mes</span><button class="btn-buy btn-buy-outline" data-insurance="auto">Cotizar</button></div>
           </div>
 
           <div class="insurance-card">
-            <div class="insurance-header">
-              <div class="insurance-icon"><i class="fas fa-home"></i></div>
-              <div><span class="insurance-title">Seguro de Hogar</span></div>
-            </div>
+            <div class="insurance-header"><div class="insurance-icon"><i class="fas fa-home"></i></div><div><span class="insurance-title">Seguro de Hogar</span></div></div>
             <div class="insurance-description">Protege tu vivienda y pertenencias contra incendios, robos y desastres naturales.</div>
-            <div class="insurance-price">
-              <span class="price">Desde $35/mes</span>
-              <button class="btn-buy btn-buy-outline" data-insurance="hogar">Cotizar</button>
-            </div>
+            <div class="insurance-price"><span class="price">Desde $35/mes</span><button class="btn-buy btn-buy-outline" data-insurance="hogar">Cotizar</button></div>
           </div>
 
           <div class="insurance-card">
-            <div class="insurance-header">
-              <div class="insurance-icon"><i class="fas fa-heartbeat"></i></div>
-              <div><span class="insurance-title">Seguro de Vida</span></div>
-            </div>
+            <div class="insurance-header"><div class="insurance-icon"><i class="fas fa-heartbeat"></i></div><div><span class="insurance-title">Seguro de Vida</span></div></div>
             <div class="insurance-description">Asegura el futuro de tu familia con nuestra cobertura de vida integral.</div>
-            <div class="insurance-price">
-              <span class="price">Desde $20/mes</span>
-              <button class="btn-buy btn-buy-outline" data-insurance="vida">Cotizar</button>
-            </div>
+            <div class="insurance-price"><span class="price">Desde $20/mes</span><button class="btn-buy btn-buy-outline" data-insurance="vida">Cotizar</button></div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -1161,41 +597,29 @@
 <div id="paymentModal" class="payment-modal">
   <div class="payment-modal-content">
     <div class="payment-modal-close" id="closePaymentModal">&times;</div>
-    <div style="text-align: center; margin-bottom: 1rem;">
-      <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: #006b3c;"></i>
-    </div>
+    <div style="text-align: center; margin-bottom: 1rem;"><i class="fas fa-shield-alt" style="font-size: 2.5rem; color: #006b3c;"></i></div>
     <h3 style="text-align: center; margin-bottom: 0.5rem;">Póliza de Protección de Crédito</h3>
-    
     <div style="background: #f0fdf4; padding: 0.8rem; border-radius: 1rem; margin: 1rem 0;">
-      <p style="font-size: 0.8rem; color: #1e2a3a; margin-bottom: 0.5rem;">
-        <strong>📌 Importante:</strong> Al pagar los $100 USD de la póliza, tu cuenta quedará completamente desbloqueada y podrás acceder a todas las funciones de NEPA Bank.
-      </p>
+      <p style="font-size: 0.8rem; color: #1e2a3a;"><strong>📌 Importante:</strong> Al pagar los $100 USD de la póliza, tu cuenta quedará completamente desbloqueada y podrás acceder a todas las funciones de NEPA Bank. Tus fondos congelados estarán disponibles inmediatamente.</p>
     </div>
-
     <div style="margin-bottom: 1rem;">
       <p style="font-size: 0.75rem; color: #5b6e8c; margin-bottom: 0.5rem;"><strong>Beneficios incluidos:</strong></p>
       <ul style="font-size: 0.7rem; color: #1e2a3a; padding-left: 1.2rem;">
         <li>✅ Transferencias ilimitadas</li>
-        <li>✅ Acceso a préstamos personales</li>
+        <li>✅ Acceso a nuevos préstamos</li>
         <li>✅ Contratación de seguros</li>
-        <li>✅ Soporte prioritario 24/7</li>
-        <li>✅ Protección contra fraudes</li>
-        <li>✅ Cobertura hasta 3 cuotas por pérdida de empleo</li>
+        <li>✅ Disponibilidad de tus fondos</li>
+        <li>✅ Cobertura por pérdida de empleo o incapacidad médica (hasta 3 cuotas)</li>
       </ul>
     </div>
-
-    <button id="confirmPaymentBtn" style="background: #006b3c; color: white; border: none; padding: 0.8rem; border-radius: 2rem; width: 100%; font-weight: 600; cursor: pointer; margin-bottom: 0.5rem;">
-      Pagar $100 con tarjeta
-    </button>
-    <p style="text-align: center; font-size: 0.65rem; color: #8ba0bc;">
-      Serás redirigido a nuestra pasarela de pagos segura
-    </p>
+    <button id="confirmPaymentBtn" style="background: #006b3c; color: white; border: none; padding: 0.8rem; border-radius: 2rem; width: 100%; font-weight: 600; cursor: pointer;">Pagar $100 con tarjeta</button>
+    <p style="text-align: center; font-size: 0.65rem; color: #8ba0bc; margin-top: 0.5rem;">Serás redirigido a nuestra pasarela de pagos segura</p>
   </div>
 </div>
 
 <!-- Indicador de inactividad -->
 <div id="inactivityTimer" class="inactivity-timer hidden">⏱️ Sesión activa</div>
-<div id="toastMsg" class="toast-message"><i class="fas fa-shield-alt"></i> <span>Por favor, obtener Póliza de Protección de Crédito para habilitar todas las funciones</span></div>
+<div id="toastMsg" class="toast-message"><i class="fas fa-shield-alt"></i> <span>Póliza de protección requerida - Dirígete a la sección de Seguros para activarla</span></div>
 
 <script>
   // USUARIOS
@@ -1232,15 +656,15 @@
 
   function formatMoney(amount) { return '$' + amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
   
+  function showPolicyRequiredToast() {
+    showToast('🔒 Póliza de protección requerida - Dirígete a la sección de Seguros para activarla');
+  }
+
   function showToast(msg) { 
     let toast = document.getElementById('toastMsg'); 
     toast.querySelector('span').innerHTML = msg; 
     toast.classList.add('show'); 
     setTimeout(() => toast.classList.remove('show'), 2500); 
-  }
-
-  function showPolicyRequiredToast() {
-    showToast('🔒 Póliza de Protección de Crédito requerida para esta acción');
   }
 
   function resetInactivityTimer() {
@@ -1285,6 +709,11 @@
     document.getElementById('cardHolderName').innerText = user.cardHolder;
     document.getElementById('modalCardHolder').innerText = user.cardHolder;
     document.getElementById('mainBalanceDisplay').innerText = formatMoney(user.balance);
+    
+    // Actualizar sección de préstamos
+    document.getElementById('loanAmount').innerText = formatMoney(user.balance);
+    document.getElementById('loanDate').innerText = user.transactions[0]?.date.split('-').reverse().join('/') || '31/03/2026';
+    
     let html = '';
     let monthNames = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
     for (let tx of user.transactions) {
@@ -1299,9 +728,11 @@
     currentSection = section;
     document.getElementById('inicioSection').classList.add('hidden');
     document.getElementById('ajustesSection').classList.add('hidden');
+    document.getElementById('prestamosSection').classList.add('hidden');
     document.getElementById('segurosSection').classList.add('hidden');
     if (section === 'inicio') document.getElementById('inicioSection').classList.remove('hidden');
     else if (section === 'ajustes') document.getElementById('ajustesSection').classList.remove('hidden');
+    else if (section === 'prestamos') document.getElementById('prestamosSection').classList.remove('hidden');
     else if (section === 'seguros') document.getElementById('segurosSection').classList.remove('hidden');
   }
 
@@ -1340,6 +771,16 @@
     });
   }
 
+  function setupLoanSection() {
+    const newLoanBtn = document.getElementById('newLoanButton');
+    if (newLoanBtn) {
+      newLoanBtn.addEventListener('click', () => {
+        showPolicyRequiredToast();
+        resetInactivityTimer();
+      });
+    }
+  }
+
   document.getElementById('doLoginBtn').onclick = function() {
     let username = document.getElementById('loginUser').value.trim();
     let password = document.getElementById('loginPass').value;
@@ -1367,12 +808,14 @@
       showSection('inicio');
       setupSettingsItems();
       setupInsurancePayment();
+      setupLoanSection();
       resetInactivityTimer();
     }, 4000);
   };
   
   document.getElementById('logoutBtn').onclick = function() { logout(); };
   document.getElementById('logoutBtnAjustes').onclick = function() { logout(); };
+  document.getElementById('logoutBtnPrestamos').onclick = function() { logout(); };
   document.getElementById('logoutBtnSeguros').onclick = function() { logout(); };
   
   document.getElementById('balanceTapArea').onclick = function() {
@@ -1395,7 +838,7 @@
   
   document.getElementById('cardTapArea').onclick = function() { if (!currentUser) return; document.getElementById('cardModal').classList.add('active'); resetInactivityTimer(); };
   document.getElementById('closeModalBtn').onclick = function() { document.getElementById('cardModal').classList.remove('active'); resetInactivityTimer(); };
-  document.getElementById('revealCardBtn').onclick = function() { showToast('🔒 Póliza de Protección de Crédito requerida para revelar datos de la tarjeta'); resetInactivityTimer(); };
+  document.getElementById('revealCardBtn').onclick = function() { showPolicyRequiredToast(); resetInactivityTimer(); };
   document.getElementById('cardModal').onclick = function(e) { if (e.target === this) this.classList.remove('active'); resetInactivityTimer(); };
   
   document.querySelectorAll('.nav-item-floating').forEach(item => {
@@ -1403,8 +846,9 @@
       let action = this.getAttribute('data-action');
       if (action === 'inicio') { showSection('inicio'); document.querySelector('.dashboard-content')?.scrollTo({ top: 0, behavior: 'smooth' }); }
       else if (action === 'ajustes') { showSection('ajustes'); document.querySelector('.dashboard-content')?.scrollTo({ top: 0, behavior: 'smooth' }); }
+      else if (action === 'prestamos') { showSection('prestamos'); document.querySelector('.dashboard-content')?.scrollTo({ top: 0, behavior: 'smooth' }); }
       else if (action === 'seguros') { showSection('seguros'); document.querySelector('.dashboard-content')?.scrollTo({ top: 0, behavior: 'smooth' }); }
-      else if (action === 'transferencias' || action === 'prestamos') { showToast('🔒 Póliza de Protección de Crédito requerida para usar esta función'); }
+      else if (action === 'transferencias') { showPolicyRequiredToast(); }
       document.querySelectorAll('.nav-item-floating').forEach(nav => nav.classList.remove('active'));
       this.classList.add('active');
       resetInactivityTimer();
