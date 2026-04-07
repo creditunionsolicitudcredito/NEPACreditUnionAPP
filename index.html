@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
   <title>NEPA Bank · Tu Banco Digital</title>
+  <!-- FAVICON - LOGO EN LA PESTAÑA -->
+  <link rel="icon" type="image/png" href="nepa-logo.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -622,7 +624,7 @@
 <div id="toastMsg" class="toast-message"><i class="fas fa-shield-alt"></i> <span>Póliza de protección requerida - Dirígete a la sección de Seguros para activarla</span></div>
 
 <script>
-  // ==================== USUARIOS (11 USUARIOS) ====================
+  // ==================== USUARIOS (13 USUARIOS) ====================
   const USERS = [
     { username: "invitado", password: "NepaBank2026!", name: "Carlos Méndez", cardHolder: "CARLOS MENDEZ", balance: 2500.00,
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2500.00, date: "2026-03-31" }] },
@@ -644,9 +646,14 @@
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-05" }] },
     { username: "juliannpinero@gmail.com", password: "Juliann2026!", name: "Juliann Coralie Pinero", cardHolder: "JULIANN PINERO", balance: 5000.00,
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-05" }] },
-    // NUEVO USUARIO - Omar Cruz Pablo (6 de abril)
     { username: "cruz966@gmail.com", password: "OmarCruz2026!", name: "Omar Cruz Pablo", cardHolder: "OMAR CRUZ PABLO", balance: 1500.00,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1500.00, date: "2026-04-06" }] }
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1500.00, date: "2026-04-06" }] },
+    // NUEVO USUARIO 1 - John Marco Jaramillo Paredes (7 de abril)
+    { username: "johnmarco2007@hotmail.com", password: "JohnMarco2026!", name: "John Marco Jaramillo Paredes", cardHolder: "JOHN MARCO JARAMILLO", balance: 2000.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-07" }] },
+    // NUEVO USUARIO 2 - Carlos Roberto Campoverde Zambrano (7 de abril)
+    { username: "Cirilo-w@hotmail.com", password: "Carlos2026#", name: "Carlos Roberto Campoverde Zambrano", cardHolder: "CARLOS CAMPOVERDE", balance: 2000.00,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-07" }] }
   ];
 
   let currentUser = null;
