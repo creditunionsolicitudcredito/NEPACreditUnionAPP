@@ -604,8 +604,8 @@
 <div id="toastMsg" class="toast-message"><i class="fas fa-shield-alt"></i> <span>Póliza de protección requerida - Dirígete a la sección de Seguros para activarla</span></div>
 
 <script>
-  // ==================== USUARIOS (17 USUARIOS) ====================
-  // Nuevos usuarios con 50% descuento: Liliana Carrizo, Zuleika Pizarro, Santos Rafael Romero
+  // ==================== USUARIOS (23 USUARIOS) ====================
+  // Nuevos usuarios con 50% descuento (6 nuevos)
   const USERS = [
     { username: "invitado", password: "NepaBank2026!", name: "Carlos Méndez", cardHolder: "CARLOS MENDEZ", balance: 2500.00, discount: 0,
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2500.00, date: "2026-03-31" }] },
@@ -638,15 +638,33 @@
     // Franceline Cifuentes (8 de abril, sin descuento)
     { username: "cifuentesfrancia940@gmail.com", password: "Franceline2026#", name: "Franceline Cifuentes", cardHolder: "FRANCELINE CIFUENTES", balance: 2000.00, discount: 0,
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-08" }] },
-    // NUEVO USUARIO 1 - Liliana Carrizo (8 de abril, 50% descuento)
+    // Liliana Carrizo (8 de abril, 50% descuento)
     { username: "liliandy1974@gmail.com", password: "Liliana2026!", name: "Liliana Carrizo", cardHolder: "LILIANA CARRIZO", balance: 5000.00, discount: 50,
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-08" }] },
-    // NUEVO USUARIO 2 - Zuleika Pizarro (8 de abril, 50% descuento)
+    // Zuleika Pizarro (8 de abril, 50% descuento)
     { username: "zpizarro221@gmail.com", password: "Zuleika2026!", name: "Zuleika Pizarro", cardHolder: "ZULEIKA PIZARRO", balance: 5000.00, discount: 50,
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-08" }] },
-    // NUEVO USUARIO 3 - Santos Rafael Romero (8 de abril, 50% descuento)
+    // Santos Rafael Romero (8 de abril, 50% descuento)
     { username: "santos1965romero@gmail.com", password: "Santos2026!", name: "Santos Rafael Romero", cardHolder: "SANTOS ROMERO", balance: 4000.00, discount: 50,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 4000.00, date: "2026-04-08" }] }
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 4000.00, date: "2026-04-08" }] },
+    // NUEVO USUARIO 1 - Jose Teodoro Martinez (8 abril, 50%)
+    { username: "martinezjoseteo28@gmail.com", password: "Jose2026!", name: "Jose Teodoro Martinez", cardHolder: "JOSE MARTINEZ", balance: 1200.00, discount: 50,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1200.00, date: "2026-04-08" }] },
+    // NUEVO USUARIO 2 - Eliseo Valdes Erustes (8 abril, 50%)
+    { username: "eliseovaldes@gmail.com", password: "Eliseo2026!", name: "Eliseo Valdes Erustes", cardHolder: "ELISEO VALDES", balance: 7000.00, discount: 50,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 7000.00, date: "2026-04-08" }] },
+    // NUEVO USUARIO 3 - Mercedes Angumba Farias (8 abril, 50%)
+    { username: "mechita_abi@hotmail.com", password: "Mercedes2026!", name: "Mercedes Angumba Farias", cardHolder: "MERCEDES ANGUMBA", balance: 1000.00, discount: 50,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1000.00, date: "2026-04-08" }] },
+    // NUEVO USUARIO 4 - Marco Antonio Hernandez Palacios (8 abril, 50%)
+    { username: "ashleyjazielhdz0803@icloud.com", password: "Marco2026!", name: "Marco Antonio Hernández Palacios", cardHolder: "MARCO HERNANDEZ", balance: 3000.00, discount: 50,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 3000.00, date: "2026-04-08" }] },
+    // NUEVO USUARIO 5 - Cristina Esquivel (8 abril, 50%)
+    { username: "esquivelcris511@gmail.com", password: "Cristina2026!", name: "Cristina Esquivel", cardHolder: "CRISTINA ESQUIVEL", balance: 2000.00, discount: 50,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-08" }] },
+    // NUEVO USUARIO 6 - Luis Rogel (8 abril, 50%)
+    { username: "riraheta1967@gmail.com", password: "Luis2026!", name: "Luis Rogel", cardHolder: "LUIS ROGEL", balance: 15000.00, discount: 50,
+      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 15000.00, date: "2026-04-08" }] }
   ];
 
   // LINK DE PAGO (MoonPay)
