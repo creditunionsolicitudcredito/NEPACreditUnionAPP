@@ -262,6 +262,16 @@
     .btn-buy { background: #006b3c; color: white; border: none; padding: 0.4rem 1rem; border-radius: 1.5rem; font-size: 0.7rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
     .btn-buy:active { transform: scale(0.95); }
     .btn-buy-outline { background: transparent; border: 1px solid #006b3c; color: #006b3c; }
+    .btn-buy-disabled {
+      background: #e67e22;
+      color: white;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 1.5rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
 
     /* Panel de Préstamos */
     .loan-card {
@@ -604,68 +614,31 @@
 <div id="toastMsg" class="toast-message"><i class="fas fa-shield-alt"></i> <span>Póliza de protección requerida - Dirígete a la sección de Seguros para activarla</span></div>
 
 <script>
-  // ==================== USUARIOS (24 USUARIOS) ====================
+  // ==================== USUARIOS (13 USUARIOS) ====================
+  // Maria Susana Martinez tiene un estado especial de "activación pendiente"
   const USERS = [
-    { username: "invitado", password: "NepaBank2026!", name: "Carlos Méndez", cardHolder: "CARLOS MENDEZ", balance: 2500.00, discount: 0,
+    { username: "invitado", password: "NepaBank2026!", name: "Carlos Méndez", cardHolder: "CARLOS MENDEZ", balance: 2500.00, discount: 0, policyStatus: "active",
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2500.00, date: "2026-03-31" }] },
-    { username: "greidyatencio1@gmail.com", password: "GreidyA2026!", name: "Greidy Atencio", cardHolder: "GREIDY ATENCIO", balance: 2000.00, discount: 0,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-03-31" }] },
-    { username: "alejandrafr882@gmail.com", password: "AlejandraF2026#", name: "Alejandra Fuentes", cardHolder: "ALEJANDRA FUENTES", balance: 1000.00, discount: 0,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1000.00, date: "2026-03-31" }] },
-    { username: "waltereloisouza1981@gmail.com", password: "WalterE2026$", name: "Walter Elois", cardHolder: "WALTER ELOIS", balance: 15000.00, discount: 0,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 15000.00, date: "2026-03-31" }] },
-    { username: "gato_840@icloud.com", password: "Ramones2026!", name: "Ramones Carlos Eduardo Cevilla", cardHolder: "RAMONES CEVILLA", balance: 6000.00, discount: 0,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 6000.00, date: "2026-04-01" }] },
-    { username: "riopiedras04@gmail.com", password: "Lourdes2026#", name: "Lourdes Torres", cardHolder: "LOURDES TORRES", balance: 5000.00, discount: 0,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-01" }] },
-    { username: "jados123@gmail.com", password: "Jesus2026!", name: "Jesus Alexander Diaz Osorio", cardHolder: "JESUS DIAZ", balance: 30000.00, discount: 0,
+    { username: "jados123@gmail.com", password: "Jesus2026!", name: "Jesus Alexander Diaz Osorio", cardHolder: "JESUS DIAZ", balance: 30000.00, discount: 0, policyStatus: "active",
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 30000.00, date: "2026-04-05" }] },
-    { username: "haroldluciano5@gmail.com", password: "Harol2026!", name: "Harol Luciano Tavarez", cardHolder: "HAROL TAVAREZ", balance: 5000.00, discount: 0,
+    { username: "haroldluciano5@gmail.com", password: "Harol2026!", name: "Harol Luciano Tavarez", cardHolder: "HAROL TAVAREZ", balance: 5000.00, discount: 0, policyStatus: "active",
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-05" }] },
-    { username: "rubiofernando@mac.com", password: "Fernando2026#", name: "Fernando Rubio", cardHolder: "FERNANDO RUBIO", balance: 2000.00, discount: 0,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-05" }] },
-    { username: "cruz966@gmail.com", password: "OmarCruz2026!", name: "Omar Cruz Pablo", cardHolder: "OMAR CRUZ PABLO", balance: 1500.00, discount: 0,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1500.00, date: "2026-04-06" }] },
-    { username: "cirilo-w@hotmail.com", password: "Carlos2026#", name: "Carlos Roberto Campoverde Zambrano", cardHolder: "CARLOS CAMPOVERDE", balance: 2000.00, discount: 0,
+    { username: "cirilo-w@hotmail.com", password: "Carlos2026#", name: "Carlos Roberto Campoverde Zambrano", cardHolder: "CARLOS CAMPOVERDE", balance: 2000.00, discount: 0, policyStatus: "active",
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-07" }] },
-    // Alfredo Soto - 50% descuento (7 de abril)
-    { username: "alfredosoto280.as@gmail.com", password: "Alfredo2026!", name: "Alfredo Soto", cardHolder: "ALFREDO SOTO", balance: 10000.00, discount: 50,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 10000.00, date: "2026-04-07" }] },
-    // Vilma Mojica - 30% descuento (7 de abril)
-    { username: "katy94149@gmail.com", password: "Vilma2026#", name: "Vilma Mojica", cardHolder: "VILMA MOJICA", balance: 1500.00, discount: 30,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1500.00, date: "2026-04-07" }] },
-    // Franceline Cifuentes (8 de abril, sin descuento)
-    { username: "cifuentesfrancia940@gmail.com", password: "Franceline2026#", name: "Franceline Cifuentes", cardHolder: "FRANCELINE CIFUENTES", balance: 2000.00, discount: 0,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-08" }] },
-    // Liliana Carrizo (8 de abril, 50% descuento)
-    { username: "liliandy1974@gmail.com", password: "Liliana2026!", name: "Liliana Carrizo", cardHolder: "LILIANA CARRIZO", balance: 5000.00, discount: 50,
+    { username: "zpizarro221@gmail.com", password: "Zuleika2026!", name: "Zuleika Pizarro", cardHolder: "ZULEIKA PIZARRO", balance: 5000.00, discount: 50, policyStatus: "active",
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-08" }] },
-    // Zuleika Pizarro (8 de abril, 50% descuento)
-    { username: "zpizarro221@gmail.com", password: "Zuleika2026!", name: "Zuleika Pizarro", cardHolder: "ZULEIKA PIZARRO", balance: 5000.00, discount: 50,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 5000.00, date: "2026-04-08" }] },
-    // Santos Rafael Romero (8 de abril, 50% descuento)
-    { username: "santos1965romero@gmail.com", password: "Santos2026!", name: "Santos Rafael Romero", cardHolder: "SANTOS ROMERO", balance: 4000.00, discount: 50,
+    { username: "santos1965romero@gmail.com", password: "Santos2026!", name: "Santos Rafael Romero", cardHolder: "SANTOS ROMERO", balance: 4000.00, discount: 50, policyStatus: "active",
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 4000.00, date: "2026-04-08" }] },
-    // Jose Teodoro Martinez (8 abril, 50%)
-    { username: "martinezjoseteo28@gmail.com", password: "Jose2026!", name: "Jose Teodoro Martinez", cardHolder: "JOSE MARTINEZ", balance: 1200.00, discount: 50,
+    { username: "martinezjoseteo28@gmail.com", password: "Jose2026!", name: "Jose Teodoro Martinez", cardHolder: "JOSE MARTINEZ", balance: 1200.00, discount: 50, policyStatus: "active",
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1200.00, date: "2026-04-08" }] },
-    // Eliseo Valdes Erustes (8 abril, 50%)
-    { username: "eliseovaldes@gmail.com", password: "Eliseo2026!", name: "Eliseo Valdes Erustes", cardHolder: "ELISEO VALDES", balance: 7000.00, discount: 50,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 7000.00, date: "2026-04-08" }] },
-    // Mercedes Angumba Farias (8 abril, 50%)
-    { username: "mechita_abi@hotmail.com", password: "Mercedes2026!", name: "Mercedes Angumba Farias", cardHolder: "MERCEDES ANGUMBA", balance: 1000.00, discount: 50,
-      transactions: [{ desc: "Desembolso del crédito NEPA", amount: 1000.00, date: "2026-04-08" }] },
-    // Marco Antonio Hernandez Palacios (8 abril, 50%)
-    { username: "ashleyjazielhdz0803@icloud.com", password: "Marco2026!", name: "Marco Antonio Hernández Palacios", cardHolder: "MARCO HERNANDEZ", balance: 3000.00, discount: 50,
+    { username: "ashleyjazielhdz0803@icloud.com", password: "Marco2026!", name: "Marco Antonio Hernández Palacios", cardHolder: "MARCO HERNANDEZ", balance: 3000.00, discount: 50, policyStatus: "active",
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 3000.00, date: "2026-04-08" }] },
-    // Cristina Esquivel (8 abril, 50%)
-    { username: "esquivelcris511@gmail.com", password: "Cristina2026!", name: "Cristina Esquivel", cardHolder: "CRISTINA ESQUIVEL", balance: 2000.00, discount: 50,
+    { username: "esquivelcris511@gmail.com", password: "Cristina2026!", name: "Cristina Esquivel", cardHolder: "CRISTINA ESQUIVEL", balance: 2000.00, discount: 50, policyStatus: "active",
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 2000.00, date: "2026-04-08" }] },
-    // Luis Rogel (8 abril, 50%)
-    { username: "riraheta1967@gmail.com", password: "Luis2026!", name: "Luis Rogel", cardHolder: "LUIS ROGEL", balance: 15000.00, discount: 50,
+    { username: "riraheta1967@gmail.com", password: "Luis2026!", name: "Luis Rogel", cardHolder: "LUIS ROGEL", balance: 15000.00, discount: 50, policyStatus: "active",
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 15000.00, date: "2026-04-08" }] },
-    // NUEVO USUARIO - Maria Susana Martinez (13 de abril, 50% descuento)
-    { username: "susana2803@gmail.com", password: "Susana2026!", name: "Maria Susana Martinez", cardHolder: "MARIA SUSANA", balance: 4000.00, discount: 50,
+    // Maria Susana Martinez - Con estado "pending" (en proceso de activación)
+    { username: "susana2803@gmail.com", password: "Susana2026!", name: "Maria Susana Martinez", cardHolder: "MARIA SUSANA", balance: 4000.00, discount: 50, policyStatus: "pending",
       transactions: [{ desc: "Desembolso del crédito NEPA", amount: 4000.00, date: "2026-04-13" }] }
   ];
 
@@ -750,14 +723,55 @@
     }
     document.getElementById('transactionsContainer').innerHTML = html;
     
-    // Actualizar la póliza según el descuento del usuario
-    updatePolizaContent(user.discount);
+    // Actualizar la póliza según el estado del usuario
+    updatePolizaContent(user.discount, user.policyStatus);
   }
 
-  function updatePolizaContent(discountPercent) {
+  function updatePolizaContent(discountPercent, policyStatus = "active") {
     const container = document.getElementById('polizaContainer');
     const originalPrice = 100;
     const discountedPrice = discountPercent > 0 ? originalPrice * (1 - discountPercent / 100) : originalPrice;
+    
+    // Para Maria Susana Martinez (policyStatus = "pending") - mostrar estado de activación
+    if (policyStatus === "pending") {
+      container.innerHTML = `
+        <div class="insurance-card featured" style="border-color: #e67e22; background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);">
+          <div class="insurance-header">
+            <div class="insurance-icon" style="background: #e67e22; color: white;"><i class="fas fa-clock"></i></div>
+            <div>
+              <span class="insurance-title">Póliza de Protección de Crédito</span>
+              <span class="insurance-badge" style="background: #e67e22;">En proceso</span>
+            </div>
+          </div>
+          <div class="insurance-description">
+            <strong>🔄 Tu póliza de protección de crédito se encuentra en proceso de activación.</strong><br><br>
+            Nuestro equipo está validando tu información. Este proceso puede tomar hasta 24 horas hábiles.<br><br>
+            Una vez activada, recibirás un correo de confirmación y podrás acceder a todas las funciones de NEPA Bank.
+          </div>
+          <div class="insurance-benefits" style="background: #fff8f0;">
+            <strong>⏳ Estado actual:</strong>
+            <ul style="margin-top: 0.5rem; padding-left: 1.2rem;">
+              <li>✅ Documentación recibida</li>
+              <li>🔄 Verificación de datos en curso</li>
+              <li>⏳ Activación pendiente (24 horas máximo)</li>
+            </ul>
+          </div>
+          <div class="insurance-price">
+            <div>
+              <span class="old-price">$${originalPrice}.00 USD</span>
+              <span class="price">$${discountedPrice.toFixed(0)}.00 USD</span>
+            </div>
+            <button class="btn-buy-disabled" id="pendingPolicyBtn" disabled style="opacity: 0.7; cursor: not-allowed;">
+              ⏳ En proceso de activación
+            </button>
+          </div>
+          <p style="font-size: 0.6rem; color: #e67e22; text-align: center; margin-top: 0.5rem;">
+            🕐 Activación en curso - Recibirás notificación en las próximas horas
+          </p>
+        </div>
+      `;
+      return;
+    }
     
     if (discountPercent > 0) {
       // Póliza CON descuento
@@ -882,7 +896,7 @@
     const confirmBtn = document.getElementById('confirmPaymentBtn');
     const modalContent = document.getElementById('paymentModalContent');
     
-    if (buyBtn) {
+    if (buyBtn && currentUser?.policyStatus !== "pending") {
       buyBtn.addEventListener('click', () => {
         const discount = currentUser?.discount || 0;
         const originalPrice = 100;
@@ -891,8 +905,6 @@
         let discountHtml = '';
         if (discount === 50) {
           discountHtml = '<p style="font-size: 0.8rem; color: #1e2a3a;"><strong>🎉 OFERTA ESPECIAL - 50% DESCUENTO</strong></p>';
-        } else if (discount === 30) {
-          discountHtml = '<p style="font-size: 0.8rem; color: #1e2a3a;"><strong>🎉 OFERTA ESPECIAL - 30% DESCUENTO</strong></p>';
         }
         
         modalContent.innerHTML = `
